@@ -1,0 +1,734 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Yudi Ruan 阮宇迪</title>
+    <meta name="author" content="YudiRuan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon/whale.png" type="image/x-icon">
+    <link rel="stylesheet" href="desktop.css" media="screen and (min-width: 601px)">
+    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 600px)">
+  </head>
+
+  <body >
+    <div class="mobile-component">
+      <ul>
+        <li><a href="#Top"><strong>Yudi Ruan</strong></a></li>&nbsp;·&nbsp;
+        <li><a href="#ResearchExperience">🔬</a></li>&nbsp;·&nbsp;
+<!--         <li><a href="#Education">📚</a></li>&nbsp;·&nbsp;-->
+        <li><a href="#Research">💡</a></li>&nbsp;·&nbsp;
+        <li><a href="#Projects">📂</a></li>&nbsp;·&nbsp;
+        <li><a href="#Awards">🏆</a></li>
+      </ul>
+    </div>
+
+    <div class="desktop-component">
+      <ul>
+        <li><a href="#Top" style="font-size: x-large;"><strong>Yudi Ruan</strong></a></li>&nbsp;·&nbsp;
+        <li><a href="#ResearchExperience">Experience</a></li>&nbsp;·&nbsp;
+        <li><a href="#Research">Research</a></li>&nbsp;·&nbsp;
+        <li><a href="#Projects">Projects</a></li>&nbsp;·&nbsp;
+        <li><a href="#Awards">Awards</a></li>
+      </ul>
+    </div>
+
+    <script>
+      // Get the height of the mobile and desktop navigation bars
+      var navbarHeightMobile = document.querySelector('.mobile-component ul').offsetHeight;
+      var navbarHeightDesktop = document.querySelector('.desktop-component ul').offsetHeight;
+  
+      // Add click event listeners to navigation links
+      document.querySelectorAll('.mobile-component ul li a, .desktop-component ul li a, .a').forEach(function(anchor) {
+          anchor.addEventListener('click', function(event) {
+              event.preventDefault(); // Prevent the default navigation behavior
+  
+              var targetId = this.getAttribute('href'); // Get the target section's ID from the link's href
+              var targetElement = document.querySelector(targetId); // Find the target element using its ID
+              var targetOffsetTop = targetElement.offsetTop; // Get the target's top offset relative to the document
+  
+              // Calculate scroll position considering the navigation bar height to avoid overlap
+              var navbarHeight = (window.innerWidth < 768) ? navbarHeightMobile : navbarHeightDesktop;
+              window.scrollTo({
+                  top: targetOffsetTop - navbarHeight,
+                  behavior: 'smooth' // Smooth scroll to the target position
+              });
+          });
+      });
+    </script>
+
+    <section id="Top"></section>
+    <table style="max-width:900px;margin:auto;padding-top: 30px;"><tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px"> 
+          <div class="bio" >
+            <div class="face-name">
+              <img src="images/profile.jpg" alt="profile photo" class="profile-img">
+              <div class="name-info">
+                  阮宇迪 <br>
+                  Yudi Ruan
+              </div>
+            </div>
+            <br>
+            <p>
+              Hi, my name is Haoquan Zhang, a junior undergraduate majoring in Data Science at South China University of Technology (SCUT), and also an incoming phd student at The Chinese University of Hong Kong (CUHK). I am currently working with <a href="https://wyliu.com/">Prof. Weiyang Liu</a>, focusing on Generative synthesis and Large Language Models. Additionally, I am collaborating with <a href="http://www.shengfenghe.com/">Prof. Shengfeng He</a> to address challenges in Knowledge Distillation.
+            </p>
+            <p>
+<!--              <strong style="color: rgb(255, 67, 183);">My ideal is to follow my interests and create simple yet enjoyable work! 🌟</strong>-->
+            </p>
+            <p>
+              <strong style="color: rgb(255, 67, 183);">I’m currently seeking a PhD or Master position for Fall 2026 admission.🌟</strong>
+            </p>
+            <div class="links">
+              <a href="data/resume.pdf">CV</a> &nbsp;·&nbsp;
+              <!-- <a href="data/resume-zh.pdf">CV-zh</a> &nbsp;·&nbsp; -->
+              <a href="https://blog.csdn.net/m0_46197553?spm=1000.2115.3001.5343">CSDN</a> &nbsp;·&nbsp;
+              <a href="https://github.com/ruanyudi">Github</a> &nbsp;·&nbsp;
+              <a href="https://scholar.google.com/citations?user=_NxfkuYAAAAJ&hl=zh-CN">Google Scholar</a> &nbsp;·&nbsp;
+              <a href="yudi.ruan@mails.cqjtu.edu.cn">Email</a>
+            </div>
+          </div>
+          
+
+<!--          <hr>-->
+<!--          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">-->
+<!--            <tbody>-->
+<!--              <tr>-->
+<!--                <td style="padding:20px;width:100%;vertical-align:middle">-->
+<!--                  <h2><strong>News📰</strong></h2>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+<!--  -->
+<!--          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">-->
+<!--            <tbody>-->
+<!--              <tr>-->
+<!--                <td style="padding:20px;width:85%;vertical-align:middle">-->
+<!--                  <p style="color: rgb(59, 59, 59);font-size: larger;">-->
+<!--                    <strong>[2024/6/26]</strong> - PhD offer from CUHK!-->
+<!--                  </p>-->
+<!--                  <p style="color: rgb(59, 59, 59);font-size: larger;">-->
+<!--                    <strong>[2024/6/14]</strong> - Mask4Align now released!-->
+<!--                  </p>-->
+<!--                  <p style="color: rgb(59, 59, 59);font-size: larger;">-->
+<!--                    <strong>[2024/2/27]</strong> - My first paper accepted by CVPR 2024! See you in Seattle! -->
+<!--                  </p>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+        
+        <hr>
+        <section id="ResearchExperience"></section>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+          <td style="padding:20px;width:100%;vertical-align:middle">
+            <h2><strong>Experience 🔬</strong></h2>
+          </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr>
+              <td style="padding:20px;width:100px;vertical-align:middle">
+                <img src="images/cqjtu_logo.webp" alt="Your Image Alt Text" style="width: 100%; height: auto;">
+              </td>
+        
+              <td style="padding:20px;width:auto;vertical-align:middle">
+                <p><strong style="font-size: larger;">Chongqing Jiaotong University</strong>
+                  <br>
+                  <em>Undergraduate Student</em>
+                  <br>
+                  <em>Rank 1/67 GPA:4.08/5.00</em>
+                  <br>
+
+                  <br>
+                  Few Shot Object Detection, Image Restoration
+                  <br>
+                  advised by <a href="http://www.shengfenghe.com/">Prof. Weikai Li</a>
+                  </p>
+
+                  <p> 
+                    China. 2022/7 - present
+                  </p>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr>
+              <td style="padding:20px;width:100px;vertical-align:middle">
+                <img src="images/uvclinic.png" alt="Your Image Alt Text" style="width: 100%; height: auto;">
+              </td>
+        
+              <td style="padding:20px;width:auto;vertical-align:middle">
+                <p><strong style="font-size: larger;">Shanghai Panoramic Medical Imaging Technology Co., Ltd</strong>
+                  <br>
+                  <em>Research Intern</em>
+                  <br>
+                  <br>
+                  Application of diagnosis of brain disorders
+                  <br>
+                </p>
+                  <p>
+                    Shanghai, China. 2023/7 - 2024/9
+                  </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr>
+              <td style="padding:20px;width:100px;vertical-align:middle">
+                <img src="images/cortex_logo.png" alt="Your Image Alt Text" style="width: 100%; height: auto;">
+              </td>
+
+              <td style="padding:20px;width:auto;vertical-align:middle">
+                <p><strong style="font-size: larger;">CORTEX Technology Co., Ltd</strong>
+                  <br>
+                  <em>Co-Founder</em>
+                  <br>
+                  <br>
+                  Embodied AI, RAG AI Agent
+                  <br>
+                </p>
+                  <p>
+                    Taizhou, China. 2024/8 - present
+                  </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <hr>
+        <section id="Research"></section>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <h2><strong>Research 💡</strong></h2>
+              
+              <br>
+              <h2 style="font-size:large;"><strong>Interests:</strong></h2>
+              <br>
+              <div class="interest">
+                · <em><strong>Multi-Modality Representation Learning</strong></em> &#127775
+              </div>
+              <br>
+              <div class="interest">
+                · <em><strong>Domain Adaptation</strong></em> &#128257
+              </div>
+              <br>
+              <div class="interest">
+                · <em><strong>Few Shot Object Detection</strong></em> &#127919
+              </div>
+            
+            
+              
+            </td>
+          </tr>
+        </tbody></table>
+
+        <section id="paper"></section>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/ECAFormer.jpg' alt="ECAFormer">
+            </div>
+            <div class="text">
+              <span class="papertitle">ECAFormer: Low-light Image Enhancement using Cross Attention</span><br>
+
+              <p>
+                <u><strong>Yudi Ruan</strong></u>,
+                Hao Ma,
+                Weikai Li,
+                Xiao Wang
+              </p>
+
+              <p>
+                TODO
+              </p>
+
+              <p>
+                <strong class="buttom"><a href="https://arxiv.org/abs/2406.13281v2">[Paper]</a></strong>
+                <!-- <strong class="buttom"><a href="https://github.com/HaoquanZhang/mask4align">[Code]</a></strong> -->
+              </p>
+
+              <div class="CVPR">
+                <strong>Submitted to AAAI 2025</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/MFCP.gif' alt="Mask4Align">
+            </div>
+            <div class="text">
+              <span class="papertitle">Asymmetric Image Retrieval with Semi-Collaborative Distillation</span><br>
+
+              <p>
+                Yi Xie*,
+                <u><strong></u>*</strong>,
+                Xuandi Luo,
+                Huaidong Zhang,
+                Xuemiao Xu,
+                <a href="http://www.shengfenghe.com/">Shengfeng He</a>
+                <br>
+                <em style="color: rgb(160, 160, 160);font-size: smaller;">* Co-first authorship</em>
+              </p>
+
+              <p>
+                In asymmetric image retrieval systems, there is a significant capacity gap between the query and gallery network. The low-capacity query network struggles to effectively store and understand knowledge from the high-capacity teacher network. Therefore, we introduce a simple yet effective semi-collaborative distillation (SCD) framework, which can additionally adjust the gallery network because the gallery network has a redundant capacity to carry specific knowledge from the query network. Specifically, as the query network converges, we incrementally unfreeze the gallery network to smoothly adjust the feature space of the gallery network to be consistent with that of the query network.
+              </p>
+
+              <p>
+                <strong class="buttom">[Paper]</strong>
+                <strong class="buttom">[Code]</strong>
+              </p>
+
+              <div class="insub">
+                <strong>Under Review</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/Manuscript.gif' alt="Mask4Align">
+            </div>
+            <div class="text">
+              <span class="papertitle">Asymmetric Image Retrieval with Semi-Collaborative Distillation</span><br>
+
+              <p>
+                Yi Xie*,
+                <u><strong></u>*</strong>,
+                Xuandi Luo,
+                Huaidong Zhang,
+                Xuemiao Xu,
+                <a href="http://www.shengfenghe.com/">Shengfeng He</a>
+                <br>
+                <em style="color: rgb(160, 160, 160);font-size: smaller;">* Co-first authorship</em>
+              </p>
+
+              <p>
+                In asymmetric image retrieval systems, there is a significant capacity gap between the query and gallery network. The low-capacity query network struggles to effectively store and understand knowledge from the high-capacity teacher network. Therefore, we introduce a simple yet effective semi-collaborative distillation (SCD) framework, which can additionally adjust the gallery network because the gallery network has a redundant capacity to carry specific knowledge from the query network. Specifically, as the query network converges, we incrementally unfreeze the gallery network to smoothly adjust the feature space of the gallery network to be consistent with that of the query network.
+              </p>
+
+              <p>
+                <strong class="buttom">[Paper]</strong>
+                <strong class="buttom">[Code]</strong>
+              </p>
+
+              <div class="insub">
+                <strong>Under Review</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/tide.gif' alt="Mask4Align">
+            </div>
+            <div class="text">
+              <span class="papertitle">Asymmetric Image Retrieval with Semi-Collaborative Distillation</span><br>
+
+              <p>
+                Yi Xie*,
+                <u><strong></u>*</strong>,
+                Xuandi Luo,
+                Huaidong Zhang,
+                Xuemiao Xu,
+                <a href="http://www.shengfenghe.com/">Shengfeng He</a>
+                <br>
+                <em style="color: rgb(160, 160, 160);font-size: smaller;">* Co-first authorship</em>
+              </p>
+
+              <p>
+                In asymmetric image retrieval systems, there is a significant capacity gap between the query and gallery network. The low-capacity query network struggles to effectively store and understand knowledge from the high-capacity teacher network. Therefore, we introduce a simple yet effective semi-collaborative distillation (SCD) framework, which can additionally adjust the gallery network because the gallery network has a redundant capacity to carry specific knowledge from the query network. Specifically, as the query network converges, we incrementally unfreeze the gallery network to smoothly adjust the feature space of the gallery network to be consistent with that of the query network.
+              </p>
+
+              <p>
+                <strong class="buttom">[Paper]</strong>
+                <strong class="buttom">[Code]</strong>
+              </p>
+
+              <div class="insub">
+                <strong>Under Review</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/toward.gif' alt="ECAFormer">
+            </div>
+            <div class="text">
+              <span class="papertitle">ECAFormer: Low-light Image Enhancement using Cross Attention</span><br>
+
+              <p>
+                <u><strong>Yudi Ruan</strong></u>,
+                Hao Ma,
+                Weikai Li,
+                Xiao Wang
+              </p>
+
+              <p>
+                Pretrained VLMs excel in accurately recognizing and precisely localizing entities within VQA tasks. However, in visual scenes with multiple entities, textual descriptions struggle to distinguish the entities from the same category effectively. Consequently, the existing VQA dataset cannot adequately cover scenarios involving multiple entities. Therefore, we introduce a Mask for Align (Mask4Align) method to determine the entity's position in the given image that best matches the user input question. This method incorporates colored masks into the image, enabling the VQA model to handle discrimination and localization challenges associated with multiple entities.
+              </p>
+
+              <p>
+                <strong class="buttom"><a href="https://arxiv.org/abs/2406.13281v2">[Paper]</a></strong>
+                <!-- <strong class="buttom"><a href="https://github.com/HaoquanZhang/mask4align">[Code]</a></strong> -->
+              </p>
+
+              <div class="CVPR">
+                <strong>AAAI 2025</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/MPGCN.gif' alt="Mask4Align">
+            </div>
+            <div class="text">
+              <span class="papertitle">Asymmetric Image Retrieval with Semi-Collaborative Distillation</span><br>
+
+              <p>
+                Yi Xie*,
+                <u><strong></u>*</strong>,
+                Xuandi Luo,
+                Huaidong Zhang,
+                Xuemiao Xu,
+                <a href="http://www.shengfenghe.com/">Shengfeng He</a>
+                <br>
+                <em style="color: rgb(160, 160, 160);font-size: smaller;">* Co-first authorship</em>
+              </p>
+
+              <p>
+                In asymmetric image retrieval systems, there is a significant capacity gap between the query and gallery network. The low-capacity query network struggles to effectively store and understand knowledge from the high-capacity teacher network. Therefore, we introduce a simple yet effective semi-collaborative distillation (SCD) framework, which can additionally adjust the gallery network because the gallery network has a redundant capacity to carry specific knowledge from the query network. Specifically, as the query network converges, we incrementally unfreeze the gallery network to smoothly adjust the feature space of the gallery network to be consistent with that of the query network.
+              </p>
+
+              <p>
+                <strong class="buttom">[Paper]</strong>
+                <strong class="buttom">[Code]</strong>
+              </p>
+
+              <div class="insub">
+                <strong>Under Review</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/FewSegment.gif' alt="Mask4Align">
+            </div>
+            <div class="text">
+              <span class="papertitle">Asymmetric Image Retrieval with Semi-Collaborative Distillation</span><br>
+
+              <p>
+                Yi Xie*,
+                <u><strong></u>*</strong>,
+                Xuandi Luo,
+                Huaidong Zhang,
+                Xuemiao Xu,
+                <a href="http://www.shengfenghe.com/">Shengfeng He</a>
+                <br>
+                <em style="color: rgb(160, 160, 160);font-size: smaller;">* Co-first authorship</em>
+              </p>
+
+              <p>
+                In asymmetric image retrieval systems, there is a significant capacity gap between the query and gallery network. The low-capacity query network struggles to effectively store and understand knowledge from the high-capacity teacher network. Therefore, we introduce a simple yet effective semi-collaborative distillation (SCD) framework, which can additionally adjust the gallery network because the gallery network has a redundant capacity to carry specific knowledge from the query network. Specifically, as the query network converges, we incrementally unfreeze the gallery network to smoothly adjust the feature space of the gallery network to be consistent with that of the query network.
+              </p>
+
+              <p>
+                <strong class="buttom">[Paper]</strong>
+                <strong class="buttom">[Code]</strong>
+              </p>
+
+              <div class="insub">
+                <strong>Under Review</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/AlteredASD.gif' alt="Mask4Align">
+            </div>
+            <div class="text">
+              <span class="papertitle">Asymmetric Image Retrieval with Semi-Collaborative Distillation</span><br>
+
+              <p>
+                Yi Xie*,
+                <u><strong></u>*</strong>,
+                Xuandi Luo,
+                Huaidong Zhang,
+                Xuemiao Xu,
+                <a href="http://www.shengfenghe.com/">Shengfeng He</a>
+                <br>
+                <em style="color: rgb(160, 160, 160);font-size: smaller;">* Co-first authorship</em>
+              </p>
+
+              <p>
+                In asymmetric image retrieval systems, there is a significant capacity gap between the query and gallery network. The low-capacity query network struggles to effectively store and understand knowledge from the high-capacity teacher network. Therefore, we introduce a simple yet effective semi-collaborative distillation (SCD) framework, which can additionally adjust the gallery network because the gallery network has a redundant capacity to carry specific knowledge from the query network. Specifically, as the query network converges, we incrementally unfreeze the gallery network to smoothly adjust the feature space of the gallery network to be consistent with that of the query network.
+              </p>
+
+              <p>
+                <strong class="buttom">[Paper]</strong>
+                <strong class="buttom">[Code]</strong>
+              </p>
+
+              <div class="insub">
+                <strong>Under Review</strong>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+          <section id="Projects"></section>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <h2><strong>Projects 📂</strong></h2>
+            </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/robotics.gif' alt="BEM 2023 Contest" >
+            </div>
+            <div class="text">
+              <span class="papertitle">Design of Auxiliary Diagnosis Algorithm for Schizophrenia Based on Feature Fusion of EEG and ECG</span><br>
+              <strong><a href="NBMEC_2023/B030079.pdf">[Entry (Chinese)]</a></strong>
+              <p></p>
+              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students
+              <br>
+              <p></p>
+              <p>
+                Calculated brain functional network features, heart rate variability features and heart-brain coupling features to build machine learning models for automatic diagnosis; Deep learning models using ResNet were built based on original EEG and ECG also.
+              </p>
+              <p><strong>Second Prize. (6%)</strong></p>
+            </div>
+          </div>
+
+          <div class="paper-container" >
+            <div class="image" onmouseout="gun_stop()" onmouseover="gun_start()">
+              <img src='images/MedSegVisualizer.gif'>
+            </div>
+            <div class="text">
+              <span class="papertitle">Perfect GunMayhem Remake: A 2D Shooting PVP Game Based on Cocos2d-x</span><br>
+              <strong><a href="https://github.com/Randonee1/Advanced-Language-Programming">[Github]</a></strong> · 
+              <strong><a href="GunMayhem/gunMayhem.html">[Project Page]</a></strong> · 
+              <strong><a href="https://gun-mayhem-2.github.io/">[Original Game]</a></strong> · 
+              <strong><a href="/GunMayhem/gunmayhem_GameArts.zip">[Art Assets (.ai)]</a></strong>
+              <br><br>
+              <em>Course design</em>, 2022, Advanced Language Programming (C++)
+              <br>
+              <p> 
+                GunMayhem Remake is a project independently completed by our team members, covering all aspects, including source code, game artwork, and music assets. You can play our <a href="https://github.com/Randonee1/Advanced-Language-Programming/tree/main/dist">executable file</a>.
+              </p>
+              <p>
+                <span style="color: rgb(182, 48, 240);">Shoutout to <a href="https://www.thekevingu.com/">Kevin Gu</a> for creating this incredible game!</span>
+              </p>
+              <p><strong>Final Score: 99, 4.0/4.0. (1%)</strong></p>
+            </div>
+          </div>
+
+          <div class="paper-container">
+            <div class="image">
+              <img src='images/autoware.gif' alt="BEM 2023 Contest" >
+            </div>
+            <div class="text">
+              <span class="papertitle">Design of Auxiliary Diagnosis Algorithm for Schizophrenia Based on Feature Fusion of EEG and ECG</span><br>
+              <strong><a href="NBMEC_2023/B030079.pdf">[Entry (Chinese)]</a></strong>
+              <p></p>
+              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students
+              <br>
+              <p></p>
+              <p>
+                Calculated brain functional network features, heart rate variability features and heart-brain coupling features to build machine learning models for automatic diagnosis; Deep learning models using ResNet were built based on original EEG and ECG also.
+              </p>
+              <p><strong>Second Prize. (6%)</strong></p>
+            </div>
+          </div>
+
+          <!-- <div class="paper-container">
+            <div class="image">
+              <img src='images/eeg-monitor.png' alt="EEG Monitor">
+            </div>
+            <div class="text">
+              <span class="papertitle">Limbs Motor Function Monitoring System Based on EEG and EMG Detection and Analysis</span><br>
+              <strong><a href="LimbMonitor/Poster.pdf">[Poster]</a></strong> · 
+              <strong><a href="LimbMonitor/bme-2022-intro.pptx">[Poster Source File (.pptx)]</a></strong>
+              <br><br>
+              <em>Course design</em>, 2021, Exploration and Design of Biomedical Engineering
+              <br>
+              <p>
+                Built an automatic classification system to assess the subject’s weight-bearing status based on EEG and EMG. This design is an exploration of the ability of EEG and EMG to assess the motor status of stroke patients.
+              </p>
+              <p><strong>Final Score: 92, 4.0/4.0.</strong></p>
+            </div>
+          </div> -->
+
+          <hr>
+          <section id="Awards"></section>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+              <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2><strong>Awards 🏆</strong></h2>
+
+                <p><strong>TaiHu Innovation Prize (1%)</strong>,
+                <br>Highest scholarship, which awarded by the Wuxi governments, 2024</p>
+                
+                <p><strong>Second Prize (6%)</strong>,
+                <br>The National BME lnnovation Design Competition, China Society of Biomedical Engineering, 2023</p>
+
+                <!-- <p><strong>Second Prize (5%)</strong>, 
+                <br>The Taihu Innovation Scholarship, Wuxi city government, 2022</p>
+
+                <p><strong>Third Prize (12%)</strong>, 
+                <br>The SCUT Scholarship, SCUT, 2022</p>
+
+                <p><strong>Third Prize (12%)</strong>, 
+                <br>The Huameng Scholarships, TCL Corporate , 2022</p> -->
+
+                <!-- <p><strong>Meritorious Winner (6%)</strong>, 
+                <br>The Interdisciplinary Contest in Modeling (ICM), <a href="https://www.comap.com/">COMAP</a>, 2021</p> -->
+  
+              </td>
+            </tr>
+          </tbody></table>
+
+          <!-- <hr>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+              <td style="padding:20px;width:100%;vertical-align:middle">
+                <h3><strong>Misc 🤔</strong></h3>
+
+                <p>· I love anime. Recently I've been watching <a href="https://makeine-anime.com/"><em>Too Many Losing Heroines!</em></a>. </p>
+                <p>· I occasionally make tracks, mainly around focused on EDM.</p>
+                <p>· I occasionally make tracks, mainly around focused on EDM.</p>
+  
+              </td>
+            </tr>
+          </tbody></table> -->
+          
+          <!-- <hr>
+          <section id="Friends"></section>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+                <tr>
+                <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2><strong>Friends 🤜🤛</strong></h2>
+                  <br>
+                <div class="image-text-container">
+                  <div class="image">
+                      <img src="images/scut_logo.png">
+                  </div>
+
+                  <div class="text">
+                  <table>
+                    <tr>
+                        <td><strong><a href="https://tobyleelsz.github.io/">Shangzhe Li</a></strong></td>
+                        <td>Research Intern @UCSD</td>
+                        <td><em>Reinforcement Learning · physics enthusiast · pilot</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://xinjie-shen.com/">Xinjie Shen</a></strong></td>
+                        <td>Research Intern @Dartmouth</td>
+                        <td><em>Interaction · Graph · Quantitative Finance</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://brandon-liu-jx.github.io/">Jinxiu Liu</a></strong></td>
+                        <td>Research Intern @Stanford</td>
+                        <td><em>4D Dynamic Generation · MLLM</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://troychowzyb.github.io/">Yubin Zhou</a></strong></td>
+                        <td>Research Intern @BrainCo</td>
+                        <td><em>Brain-Computer Interface · Cognitive Neuroscience</em></td>
+                    </tr>
+                  </table>
+                </div>
+                
+                </div>
+
+                <div class="image-text-container">
+                  <div class="image">
+                      <img src="images/NYU.jpg">
+                  </div>
+                  <div class="text">
+                    <table>
+                      <tr>
+                        <td><strong>Junru Liao</strong></td>
+                        <td>Undergraduate @NYU</td>
+                        <td><em>Biomechanics · Cellular Mechanics Response</em></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="image-text-container">
+                  <div class="image">
+                      <img src="images/Sun_Yat-sen_University_Logo.png">
+                  </div>
+                  <div class="text">
+                    <h2 style="padding-bottom:10px;">Sun Yat-sen University</h2>
+
+                    <strong>HONG Xuan</strong>
+                     - <em>High-Energy Phenomenology · Particle Physics · Cosmology<br>
+
+                    <strong>FAN Wei</strong>
+                     - <em>Piezoelectricity · Semiconductor · DeviceFabrication<br>
+                  </div>
+                </div>
+
+                </td>
+            </tr>
+            </tbody>
+          </table> -->
+          
+          <hr>
+<!--          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;padding: 20px;">-->
+<!--            <tbody>-->
+<!--              <tr>-->
+<!--                <td style="padding:0px">-->
+<!--                  <p style="text-align:center;">-->
+<!--                    Thanks to <a href="https://github.com/jonbarron/jonbarron_website">John Barron</a> for this homepage template.-->
+<!--                    <br>-->
+<!--                    Feel free to take the <a href="https://github.com/HaoquanZhang/HaoquanZhang.github.io">resources</a> of this page.-->
+<!--                  </p>-->
+<!--                  <p style="text-align:center;color: rgb(143, 143, 143);">-->
+<!--                    © 2024 Haoquan Zhang-->
+<!--                  </p>-->
+<!--                  <div class="logo-container">-->
+<!--                    <img src="images/scut_logo.png" alt="SCUT Logo">-->
+<!--                    <img src="images/gzic.jpg" alt="GZIC">-->
+<!--                    <img src="images/smu.svg" alt="SMU Logo">-->
+<!--                    <img src="images/CUHK.png" alt="CUHK Logo">-->
+<!--                </div>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+
