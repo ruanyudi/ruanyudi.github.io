@@ -10,6 +10,25 @@
     <!--    <link rel="shortcut icon" href="images/cortex_logo.png" type="image/x-icon">-->
     <link rel="stylesheet" href="desktop.css" media="screen and (min-width: 601px)">
     <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 600px)">
+    <style>
+        /* Media query to hide the right column when screen width is less than 600px */
+        @media (max-width: 600px) {
+            .right-column {
+                display: none;
+            }
+            .bottom-column{
+                display: block;
+            }
+        }
+        @media (min-width: 600px) {
+            .right-column {
+                display: block;
+            }
+            .bottom-column{
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>

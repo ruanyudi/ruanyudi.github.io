@@ -188,13 +188,6 @@ ul li a:hover{
       display: none;
   }
 }
-.right-column{
-  display: block;
-}
-.bottom-column{
-  display: none;
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
