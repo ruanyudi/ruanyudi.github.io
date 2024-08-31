@@ -22,6 +22,13 @@
             }
         }
 
+        .inline-icon {
+            vertical-align: middle; /* 使图标与文本对齐 */
+            width: 24px; /* 设置图标的宽度 */
+            height: 24px; /* 设置图标的高度 */
+            margin-bottom: 4px;
+        }
+
         @media (min-width: 600px) {
             .right-column {
                 display: block;
@@ -139,9 +146,13 @@
                     <a href="data/resume.pdf">CV</a> &nbsp;·&nbsp;
                     <!-- <a href="data/resume-zh.pdf">CV-zh</a> &nbsp;·&nbsp; -->
                     <a href="https://blog.csdn.net/m0_46197553?spm=1000.2115.3001.5343">CSDN</a> &nbsp;·&nbsp;
-                    <a href="https://github.com/ruanyudi">Github</a> &nbsp;·&nbsp;
+                    <a href="https://github.com/ruanyudi">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                             alt="GitHub Logo" class="inline-icon">
+                        Github
+                    </a> &nbsp;·&nbsp;
                     <a href="https://scholar.google.com/citations?user=_NxfkuYAAAAJ&hl=zh-CN">Google Scholar</a> &nbsp;·&nbsp;
-                    <a href="yudi.ruan@mails.cqjtu.edu.cn">Email</a>
+                    <a href="mailto:yudi.ruan@mails.cqjtu.edu.cn">Email</a>
                 </div>
             </div>
 
@@ -770,16 +781,21 @@
                     <img src='images/robotics.gif' alt="robotics">
                 </div>
                 <div class="text">
-                    <span class="papertitle">TODO</span><br>
+                    <span class="papertitle">RX7: hexapod spider robot</span><br>
                     <!--              <strong><a href="NBMEC_2023/B030079.pdf">[Entry (Chinese)]</a></strong>-->
-                    <p></p>
-                    <!--              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students-->
-                    <br>
-                    <p></p>
                     <p>
-                        TODO
+                        It integrates NVIDIA Jetson series development kits and Intel Realsense cameras, equipped with
+                        16 high-precision servos. The robot's body is designed and cut from carbon fiber plates.
+                        Currently, it is capable of autonomous mapping and navigation,
+                        as well as target tracking, making it suitable for exploring complex terrains and performing
+                        various tasks. The future work involves integrating LLMs to create an embodied AI.
                     </p>
+                    <!--              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students-->
                     <!--              <p><strong>Second Prize. (6%)</strong></p>-->
+                    <strong>Keywords: SLAM, Mechanical Design </strong><br><br>
+                    <div class="pub">
+                        Under Development
+                    </div>
                 </div>
             </div>
 
@@ -788,15 +804,25 @@
                     <img src='images/MedSegVisualizer.gif' alt="MedSegVisualizer">
                 </div>
                 <div class="text">
+                    <span class="papertitle">Huanshi: 3D Medical Imaging Data Analysis Platform</span><br>
                     <!--              <span class="papertitle">Design of Auxiliary Diagnosis Algorithm for Schizophrenia Based on Feature Fusion of EEG and ECG</span><br>-->
                     <!--              <strong><a href="NBMEC_2023/B030079.pdf">[Entry (Chinese)]</a></strong>-->
-                    <p></p>
-                    <!--              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students-->
-                    <br>
-                    <p></p>
                     <p>
-                        TODO
+                        This project is an AI-based 3D medical imaging data analysis system that utilizes
+                        state-of-the-art machine vision models. It intelligently analyzes multimodal medical imaging
+                        data, including CT and MRI scans, to automatically segment and visualize relevant areas, such as
+                        15 abdominal
+                        organs and tumors. The project employs a Client/Server (C/S) architecture, with
+                        visualization handled on the client side via ITK, and data augmentation and model inference
+                        managed on the server side. The server side utilizes the industry-leading
+                        Kubernetes (K8S) distributed architecture for cloud computing, deploying inference engines in
+                        containers to achieve automatic scaling and fault tolerance, resulting in high performance and
+                        high availability.
                     </p>
+                    <strong>Keywords: K8S, Deep-learning, Medical Science </strong><br><br>
+                    <div class="pub">
+                        Chongqing Provincial Innovation Project
+                    </div>
                     <!--              <p><strong>Second Prize. (6%)</strong></p>-->
                 </div>
             </div>
@@ -806,16 +832,18 @@
                     <img src='images/autoware.gif' alt="autoware">
                 </div>
                 <div class="text">
-                    <!--              <span class="papertitle">Design of Auxiliary Diagnosis Algorithm for Schizophrenia Based on Feature Fusion of EEG and ECG</span><br>-->
-                    <!--              <strong><a href="NBMEC_2023/B030079.pdf">[Entry (Chinese)]</a></strong>-->
-                    <p></p>
-                    <!--              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students-->
+                    <div class="papertitle">Train Multi-Source Fusion Perception System</div>
                     <br>
-                    <p></p>
                     <p>
-                        TODO
+                        It utilizes NVIDIA Jetson series development kits and Intel Realsense series
+                        cameras. It aims to measure the real-time velocity and location of urban trains through visual
+                        (monocular/stereo) and accelerometer data, constructing a visual inertial odometry system to
+                        replace traditional wheel encoders.
                     </p>
-                    <!--              <p><strong>Second Prize. (6%)</strong></p>-->
+                    <strong>Keywords: SLAM, Visual Odometry</strong><br><br>
+                    <div class="pub">
+                        Chinese National Innovation Project
+                    </div>
                 </div>
 
             </div>
@@ -825,51 +853,57 @@
                     <img src='images/LLIEVisualizer.gif' alt="LLIEVisualizer">
                 </div>
                 <div class="text">
-                    <!--              <span class="papertitle">Design of Auxiliary Diagnosis Algorithm for Schizophrenia Based on Feature Fusion of EEG and ECG</span><br>-->
-                    <!--              <strong><a href="NBMEC_2023/B030079.pdf">[Entry (Chinese)]</a></strong>-->
-                    <p></p>
-                    <!--              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students-->
+                    <div class="papertitle">Image Enhancement and Analysis System</div>
                     <br>
-                    <p></p>
                     <p>
-                        TODO
+                        An integrated platform that integrates image enhancement models and high-level vision
+                        models, aimed at assisting with dataset annotation and enhancement. It uses ONNX for model
+                        deployment.
                     </p>
+                    <strong>Keywords: QT, Model Deployment</strong><br><br>
+                    <div class="pub">
+                        Under Development
+                    </div>
                     <!--              <p><strong>Second Prize. (6%)</strong></p>-->
                 </div>
             </div>
 
-            <div class="paper-container">
-                <div class="image">
-                    <img src='images/Tcore.gif' alt="Tcore">
-                </div>
-                <div class="text">
-                    <!--              <span class="papertitle">Design of Auxiliary Diagnosis Algorithm for Schizophrenia Based on Feature Fusion of EEG and ECG</span><br>-->
-                    <!--              <strong><a href="NBMEC_2023/B030079.pdf">[Entry (Chinese)]</a></strong>-->
-                    <p></p>
-                    <!--              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students-->
-                    <br>
-                    <p></p>
-                    <p>
-                        TODO
-                    </p>
-                    <!--              <p><strong>Second Prize. (6%)</strong></p>-->
-                </div>
-            </div>
 
             <div class="paper-container">
                 <div class="image">
                     <img src='images/RAGAgent.gif' alt="RAGAgent">
                 </div>
                 <div class="text">
-                    <!--              <span class="papertitle">Design of Auxiliary Diagnosis Algorithm for Schizophrenia Based on Feature Fusion of EEG and ECG</span><br>-->
-                    <!--              <strong><a href="NBMEC_2023/B030079.pdf">[Entry (Chinese)]</a></strong>-->
-                    <p></p>
-                    <!--              <em>Entry</em>, 2023, National Biomedical Engineering Innovation Design Competition for College Students-->
-                    <br>
-                    <p></p>
+                    <div class="papertitle"> CORTEX CHAT Agent</div>
                     <p>
-                        TODO
+                        Built a customizable AI agent based on RAG technology, which helps to mitigate LLM
+                        hallucinations and accelerate the deployment of LLMs. It is inspired by NVIDIA's online course
+                        <a href="https://www.nvidia.cn/training/instructor-led-workshops/building-rag-agents-with-llms/">"Building RAG Agent with LLMs"</a>.
                     </p>
+                    <strong>Keywords: SLMs, LLMs, RAG</strong><br><br>
+                    <div class="pub">
+                        Under Development
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5em; /* Adjust the font size */
+            font-weight: bold; /* Make the text bold */
+            color: #2a9d8f; /* Change the text color */
+            text-align: center; /* Center align the text */
+            margin: 20px 0; /* Add some margin above and below the heading */">
+                Empowering Traditional Industries with Knowledge: </h3>
+
+            <div class="paper-container">
+                <div class="image">
+                    <img src='images/Tcore.gif' alt="Tcore">
+                </div>
+                <div class="text">
+                    <div class="papertitle">web design for Tocore</div><br>
+                    <p>
+
+                    </p>
+                    <strong>Keywords: HTML, CSS, JavaScript, Nginx</strong><br><br>
                     <!--              <p><strong>Second Prize. (6%)</strong></p>-->
                 </div>
             </div>
