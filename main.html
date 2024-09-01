@@ -7,7 +7,7 @@
     <title>Yudi Ruan 阮宇迪</title>
     <meta name="author" content="YudiRuan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/src/images/pngs/cortex_logo.png" type="image/png">
+    <link rel="shortcut icon" href="/src/images/cortex_logo.png" type="image/png">
     <link rel="stylesheet" href="/css/desktop.css" media="screen and (min-width: 601px)">
     <link rel="stylesheet" href="/css/mobile.css" media="screen and (max-width: 600px)">
     <style>
@@ -39,6 +39,50 @@
             }
         }
     </style>
+    <script>
+        let ext_changeList = [];
+
+        function changeImageExtensions(origin, target) {
+            // 获取所有的 <img> 元素
+            images = ext_changeList
+            console.log(images)
+
+            // 遍历所有的 <img> 元素
+            images.forEach(img => {
+                // 获取图像的 src 属性
+                let src = img.src;
+
+                // 检查 src 是否以 .gif 结尾
+                if (src.endsWith(origin)) {
+                    // 替换 .gif 为 .png
+                    img.src = src.replace(origin, target);
+                }
+            });
+        }
+
+        function getQueryParams() {
+            // 获取 URL 查询参数部分
+            ext_changeList = document.querySelectorAll('img');
+            ext_changeList = Array.from(ext_changeList).filter(img => img.src.endsWith('.gif'));
+            let queryString = window.location.search;
+
+            // 创建 URLSearchParams 对象
+            let urlParams = new URLSearchParams(queryString);
+
+            // 获取查询参数
+            let version = urlParams.get('version');
+            if (version === 'static') {
+                document.getElementById('low-bandwidth-attention').style.display = 'block';
+                changeImageExtensions('.gif', '.png')
+            } else {
+                document.getElementById('low-bandwidth-attention').style.display = 'none';
+                changeImageExtensions('.png', '.gif')
+            }
+        }
+
+        // 确保 DOM 完全加载后调用 getQueryParams
+        document.addEventListener("DOMContentLoaded", getQueryParams);
+    </script>
 </head>
 
 <body>
@@ -92,9 +136,17 @@
     <tbody>
     <tr style="padding:0px">
         <td style="padding:0px">
+            <div id="low-bandwidth-attention">
+                <br>
+                <em style="color: rgb(160, 160, 160);font-size: smaller;"> It looks like you're accessing a static
+                    version of the site due to a low-bandwidth network connection.
+                    For an enhanced experience with more features, please visit
+                    <a href="main.html?version=dynamic"><u>Link</u></a>.</em>
+                <hr>
+            </div>
             <div class="bio">
                 <div class="face-name">
-                    <img src="src/images/pngs/profile.jpg" alt="profile photo" class="profile-img">
+                    <img src="src/images/profile.jpg" alt="profile photo" class="profile-img">
                     <div class="name-info">
                         <table style="width: 100%;">
                             <tr>
@@ -147,15 +199,15 @@
                     <!-- <a href="data/resume-zh.pdf">CV-zh</a> &nbsp;·&nbsp; -->
                     <a href="https://blog.csdn.net/m0_46197553?spm=1000.2115.3001.5343">
                         <img src="https://th.bing.com/th?id=ODLS.75fbaa62-ad18-4e8b-9ca8-67706ec82c93&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"
-                             alt="GitHub Logo" class="inline-icon"  style="width: 18px; height: 18px; ">
+                             alt="GitHub Logo" class="inline-icon" style="width: 18px; height: 18px; ">
                         CSDN</a> &nbsp;·&nbsp;
                     <a href="https://github.com/ruanyudi">
-                        <img src="/src/images/pngs/github-logo.png"
+                        <img src="/src/images/github-logo.png"
                              alt="GitHub Logo" class="inline-icon">
                         Github
                     </a> &nbsp;·&nbsp;
                     <a href="https://scholar.google.com/citations?user=_NxfkuYAAAAJ&hl=zh-CN">
-                        <img src="/src/images/pngs/google-scholar-ico.png"
+                        <img src="/src/images/google-scholar-ico.png"
                              alt="Google scholar Logo" class="inline-icon" style="width: 18px; height: 18px; ">
                         Google Scholar</a> &nbsp;·&nbsp;
                     <a href="mailto:yudi.ruan@mails.cqjtu.edu.cn">&#128231 Email</a>
@@ -283,7 +335,8 @@
                 <tbody>
                 <tr>
                     <td style="padding:20px;width:100px;vertical-align:middle">
-                        <img src="src/images/pngs/cqjtu_logo.webp" alt="Your Image Alt Text" style="width: 100%; height: auto;">
+                        <img src="src/images/cqjtu_logo.webp" alt="Your Image Alt Text"
+                             style="width: 100%; height: auto;">
                     </td>
 
                     <td style="padding:20px;width:auto;vertical-align:middle">
@@ -313,7 +366,7 @@
                 <tbody>
                 <tr>
                     <td style="padding:20px;width:100px;vertical-align:middle">
-                        <img src="src/images/pngs/uvclinic.png" alt="Your Image Alt Text" style="width: 100%; height: auto;">
+                        <img src="src/images/uvclinic.png" alt="Your Image Alt Text" style="width: 100%; height: auto;">
                     </td>
 
                     <td style="padding:20px;width:auto;vertical-align:middle">
@@ -338,7 +391,8 @@
                 <tbody>
                 <tr>
                     <td style="padding:20px;width:100px;vertical-align:middle">
-                        <img src="src/images/pngs/cortex_logo.png" alt="Your Image Alt Text" style="width: 100%; height: auto;">
+                        <img src="src/images/cortex_logo.png" alt="Your Image Alt Text"
+                             style="width: 100%; height: auto;">
                     </td>
 
                     <td style="padding:20px;width:auto;vertical-align:middle">
@@ -392,7 +446,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/ECAFormer.gif' alt="ECAFormer">
+                    <img src='src/images/ECAFormer.gif' alt="ECAFormer">
                 </div>
                 <div class="text">
                     <span class="papertitle">ECAFormer: Low-light Image Enhancement using Cross Attention</span><br>
@@ -433,7 +487,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/MFCP.gif' alt="MFCP">
+                    <img src='src/images/MFCP.gif' alt="MFCP">
                 </div>
                 <div class="text">
                     <span class="papertitle">MFCP: Identification of Major Depressive Disorder Using Multiple Functional Connection Pattern</span><br>
@@ -473,7 +527,8 @@
                         <!--                <strong class="buttom">[Paper]</strong>-->
                         <!--                <strong class="buttom">[Code]</strong>-->
                     </p>
-                    <strong>Keywords: Resting-state fMRI; Connection patterns; Functional brain network; Graph convolutional network; Major depressive disorders.</strong><br><br>
+                    <strong>Keywords: Resting-state fMRI; Connection patterns; Functional brain network; Graph
+                        convolutional network; Major depressive disorders.</strong><br><br>
                     <div class="insub">
                         <strong>Under Review</strong>
                     </div>
@@ -482,7 +537,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/Manuscript.gif' alt="Manuscript">
+                    <img src='src/images/Manuscript.gif' alt="Manuscript">
                 </div>
                 <div class="text">
                     <span class="papertitle">Contrastive Clustering-driven Topological Organization Unveils Characterization of Hybrid-rice with In-Field for Variety Purification</span><br>
@@ -528,7 +583,8 @@
                         <!--                <strong class="buttom">[Paper]</strong>-->
                         <!--                <strong class="buttom">[Code]</strong>-->
                     </p>
-                    <strong>Keywords: Hybrid-rice, Phenotypic, Visualization, Data integration, Contrastive learning.</strong><br><br>
+                    <strong>Keywords: Hybrid-rice, Phenotypic, Visualization, Data integration, Contrastive
+                        learning.</strong><br><br>
                     <div class="insub">
                         <strong>Under Review</strong>
                     </div>
@@ -537,7 +593,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/tide.gif' alt="tide">
+                    <img src='src/images/tide.gif' alt="tide">
                 </div>
                 <div class="text">
                     <span class="papertitle">TIDE: Test-Time Few Shot Object Detection</span><br>
@@ -584,7 +640,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/toward.gif' alt="toward">
+                    <img src='src/images/toward.gif' alt="toward">
                 </div>
                 <div class="text">
                     <span class="papertitle">Towards an accurate autism spectrum disorder diagnosis: multiple connectome views from fMRI data</span><br>
@@ -622,7 +678,8 @@
                         <!--                <strong class="buttom"><a href="https://arxiv.org/abs/2406.13281v2">[Paper]</a></strong>-->
                         <!-- <strong class="buttom"><a href="https://github.com/HaoquanZhang/mask4align">[Code]</a></strong> -->
                     </p>
-                    <strong>Keywords: autism spectrum disorder; multi kernel learning; partial correlation; Pearson’s correlation; Granger causality.</strong><br><br>
+                    <strong>Keywords: autism spectrum disorder; multi kernel learning; partial correlation; Pearson’s
+                        correlation; Granger causality.</strong><br><br>
                     <div class="pub">
                         <strong>Cerebral Cortex</strong>
                     </div>
@@ -631,7 +688,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/MPGCN.gif' alt="MPGCN">
+                    <img src='src/images/MPGCN.gif' alt="MPGCN">
                 </div>
                 <div class="text">
                     <span class="papertitle">Multipattern graph convolutional network-based autism spectrum disorder identification</span><br>
@@ -671,7 +728,8 @@
                         <!--                <strong class="buttom">[Paper]</strong>-->
                         <!--                <strong class="buttom">[Code]</strong>-->
                     </p>
-                    <strong>Keywords: resting-state fMRI; autism spectrum disorder; multipattern; brain connectivity networks; graph convolution network.</strong><br><br>
+                    <strong>Keywords: resting-state fMRI; autism spectrum disorder; multipattern; brain connectivity
+                        networks; graph convolution network.</strong><br><br>
                     <div class="pub">
                         <strong>Cerebral Cortex</strong>
                     </div>
@@ -680,7 +738,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/FewSegment.gif' alt="FewSegment">
+                    <img src='src/images/FewSegment.gif' alt="FewSegment">
                 </div>
                 <div class="text">
                     <span class="papertitle">Few-shot segmentation with duplex network and attention augmented module</span><br>
@@ -714,7 +772,8 @@
                         <!--                <strong class="buttom">[Paper]</strong>-->
                         <!--                <strong class="buttom">[Code]</strong>-->
                     </p>
-                    <strong>Keywords: few-shot segmentation, semantic segmentation, mixture models, duplex mode, attention module</strong><br><br>
+                    <strong>Keywords: few-shot segmentation, semantic segmentation, mixture models, duplex mode,
+                        attention module</strong><br><br>
                     <div class="pub">
                         <strong>Frontiers in Neurorobotics</strong>
                     </div>
@@ -723,7 +782,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/AlteredASD.gif' alt="AlteredASD">
+                    <img src='src/images/AlteredASD.gif' alt="AlteredASD">
                 </div>
                 <div class="text">
                     <span class="papertitle">Altered intra- and inter-network connectivity in autism spectrum disorder</span><br>
@@ -763,7 +822,8 @@
                         <!--                <strong class="buttom">[Paper]</strong>-->
                         <!--                <strong class="buttom">[Code]</strong>-->
                     </p>
-                    <strong>Keywords: autism spectrum disorder, inter-network connectivity, intra-network connectivity, support vector machine, functional brain network</strong><br><br>
+                    <strong>Keywords: autism spectrum disorder, inter-network connectivity, intra-network connectivity,
+                        support vector machine, functional brain network</strong><br><br>
                     <div class="pub">
                         <strong>Aging</strong>
                     </div>
@@ -784,7 +844,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/robotics.gif' alt="robotics">
+                    <img src='src/images/robotics.gif' alt="robotics">
                 </div>
                 <div class="text">
                     <span class="papertitle">RX7: hexapod spider robot</span><br>
@@ -807,7 +867,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/MedSegVisualizer.gif' alt="MedSegVisualizer">
+                    <img src='src/images/MedSegVisualizer.gif' alt="MedSegVisualizer">
                 </div>
                 <div class="text">
                     <span class="papertitle">Huanshi: 3D Medical Imaging Data Analysis Platform</span><br>
@@ -835,7 +895,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/autoware.gif' alt="autoware">
+                    <img src='src/images/autoware.gif' alt="autoware">
                 </div>
                 <div class="text">
                     <div class="papertitle">Train Multi-Source Fusion Perception System</div>
@@ -856,7 +916,7 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/LLIEVisualizer.gif' alt="LLIEVisualizer">
+                    <img src='src/images/LLIEVisualizer.gif' alt="LLIEVisualizer">
                 </div>
                 <div class="text">
                     <div class="papertitle">Image Enhancement and Analysis System</div>
@@ -877,14 +937,15 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/RAGAgent.gif' alt="RAGAgent">
+                    <img src='src/images/RAGAgent.gif' alt="RAGAgent">
                 </div>
                 <div class="text">
                     <div class="papertitle"> CORTEX Chat Agent</div>
                     <p>
                         Built a customizable AI agent based on RAG technology, which helps to mitigate LLM
                         hallucinations and accelerate the deployment of LLMs. It is inspired by NVIDIA's online course
-                        <a href="https://www.nvidia.cn/training/instructor-led-workshops/building-rag-agents-with-llms/">"Building RAG Agent with LLMs"</a>.
+                        <a href="https://www.nvidia.cn/training/instructor-led-workshops/building-rag-agents-with-llms/">"Building
+                            RAG Agent with LLMs"</a>.
                     </p>
                     <strong>Keywords: SLMs, LLMs, RAG</strong><br><br>
                     <div class="pub">
@@ -902,10 +963,11 @@
 
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/Tocore.gif' alt="Tcore">
+                    <img src='src/images/Tocore.gif' alt="Tcore">
                 </div>
                 <div class="text">
-                    <div class="papertitle">Web Design for Tocore</div><br>
+                    <div class="papertitle">Web Design for Tocore</div>
+                    <br>
                     <p></p>
                     <strong>Keywords: HTML, CSS, JavaScript, Nginx</strong><br><br>
                     <!--              <p><strong>Second Prize. (6%)</strong></p>-->
@@ -913,17 +975,18 @@
             </div>
             <div class="paper-container">
                 <div class="image">
-                    <img src='src/images/gifs/FingerprintExtractor.gif' alt="FingerprintExtractor">
+                    <img src='src/images/FingerprintExtractor.gif' alt="FingerprintExtractor">
                 </div>
                 <div class="text">
-                    <div class="papertitle">FingerPrint Extractor designed for Safe Security</div><br>
+                    <div class="papertitle">FingerPrint Extractor designed for Safe Security</div>
+                    <br>
                     <p></p>
                     <strong>Keywords: Tracking, FingerPrint, Thinning Methods</strong><br><br>
-                    <a href="https://github.com/ruanyudi/FingerPrint">
+                    <a href="https://github.com/ruanyudi/FingerPrint"><strong>
                         [
                         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                              alt="GitHub Logo" class="inline-icon">
-                        Code]
+                        Code]</strong>
                     </a>
                     <!--              <p><strong>Second Prize. (6%)</strong></p>-->
                 </div>

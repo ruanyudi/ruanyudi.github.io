@@ -23,7 +23,7 @@
 
             const startTime = new Date().getTime();
             const testImage = new Image();
-            const imageUrl = "/src/images/gifs/MedSegVisualizer.gif"; // URL of a test image file
+            const imageUrl = "/src/images/MedSegVisualizer.gif"; // URL of a test image file
             const imageSize = 2406785 ; // size of the test image in bytes
 
             testImage.onload = function() {
@@ -36,18 +36,18 @@
                 statusElement.textContent = `Test complete. Your bandwidth is ${speedMbps} Mbps.`;
 
                 // Redirect based on bandwidth speed
-                if (speedMbps >= 5) { // Example threshold of 5 Mbps for 'high bandwidth'
+                if (speedMbps >= 10) { // Example threshold of 5 Mbps for 'high bandwidth'
                     statusElement.textContent += ' Redirecting to dynamic content...';
-                    setTimeout(() => window.location.href = 'index_dynamic.html', 2000); // Redirect after 2 seconds
+                    setTimeout(() => window.location.href = 'main.html?version=dynamic', 2000); // Redirect after 2 seconds
                 } else {
                     statusElement.textContent += ' Redirecting to static content...';
-                    setTimeout(() => window.location.href = 'index_static.html', 2000); // Redirect after 2 seconds
+                    setTimeout(() => window.location.href = 'main.html?version=static', 2000); // Redirect after 2 seconds
                 }
             };
 
             testImage.onerror = function() {
                 statusElement.textContent = 'Error loading image. Redirecting to static content...';
-                setTimeout(() => window.location.href = 'index_static.html', 2000); // Redirect after 2 seconds
+                setTimeout(() => window.location.href = 'main.html?version=static', 2000); // Redirect after 2 seconds
             };
 
             testImage.src = imageUrl + "?cacheBust=" + startTime; // cache-busting URL
