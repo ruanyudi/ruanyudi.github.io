@@ -8,45 +8,90 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
             text-align: center;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
         }
+
+        h1 {
+            color: #4CAF50;
+            margin-top: 50px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
         #status {
-            font-size: 18px;
-            margin: 20px;
+            font-size: 1.2em;
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .loading {
+            color: #2196F3;
+        }
+
+        .success {
+            color: #4CAF50;
+        }
+
+        .error {
+            color: #F44336;
+        }
+
+        .link {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link:hover {
+            text-decoration: underline;
         }
     </style>
     <script>
         function checkBandwidth() {
             const statusElement = document.getElementById('status');
             statusElement.textContent = 'Starting bandwidth test...';
+            statusElement.classList.add('loading');
 
             const startTime = new Date().getTime();
             const testImage = new Image();
             const imageUrl = "/src/images/MedSegVisualizer.gif"; // URL of a test image file
-            const imageSize = 2406785 ; // size of the test image in bytes
+            const imageSize = 2406785; // size of the test image in bytes
 
-            testImage.onload = function() {
+            testImage.onload = function () {
                 const endTime = new Date().getTime();
                 const duration = (endTime - startTime) / 1000; // duration in seconds
                 const bitsLoaded = imageSize * 8;
                 const speedBps = bitsLoaded / duration; // speed in bits per second
                 const speedMbps = (speedBps / (1024 * 1024)).toFixed(2); // speed in Mbps
 
-                statusElement.textContent = `Test complete. Your bandwidth is ${speedMbps} Mbps.`;
+                statusElement.classList.remove('loading');
+                statusElement.classList.add('success');
+                statusElement.innerHTML = `Test complete. Your bandwidth is <strong>${speedMbps}</strong> Mbps.<br>`;
 
                 // Redirect based on bandwidth speed
-                if (speedMbps >= 10) { // Example threshold of 5 Mbps for 'high bandwidth'
-                    statusElement.textContent += ' Redirecting to dynamic content...';
+                if (speedMbps >= 10) { // Example threshold of 10 Mbps for 'high bandwidth'
+                    statusElement.innerHTML += 'Redirecting to <a href="main.html?version=dynamic" class="link">dynamic content</a>...';
                     setTimeout(() => window.location.href = 'main.html?version=dynamic', 2000); // Redirect after 2 seconds
                 } else {
-                    statusElement.textContent += ' Redirecting to static content...';
+                    statusElement.innerHTML += 'Redirecting to <a href="main.html?version=static" class="link">static content</a>...';
                     setTimeout(() => window.location.href = 'main.html?version=static', 2000); // Redirect after 2 seconds
                 }
             };
 
-            testImage.onerror = function() {
-                statusElement.textContent = 'Error loading image. Redirecting to static content...';
+            testImage.onerror = function () {
+                statusElement.classList.remove('loading');
+                statusElement.classList.add('error');
+                statusElement.innerHTML = 'Error loading image. Redirecting to <a href="main.html?version=static" class="link">static content</a>...';
                 setTimeout(() => window.location.href = 'main.html?version=static', 2000); // Redirect after 2 seconds
             };
 
@@ -57,7 +102,7 @@
     </script>
 </head>
 <body>
-    <h1>Bandwidth Test</h1>
-    <div id="status">Testing your bandwidth, please wait...</div>
+<h1>Bandwidth Test</h1>
+<div id="status">Testing your bandwidth, please wait...</div>
 </body>
 </html>
