@@ -4,26 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Index</title>
+    <title>Bandwidth Check</title>
     <script>
-        // 使用 fetch 来调用 ipinfo.io 的 API
-        fetch('https://ipinfo.io/json?token=a858b13e736d4a')  // 替换为你的 API token
-            .then(response => response.json())
-            .then(data => {
-                const country = data.country;  // 获取国家代码，例如 'CN' 表示中国
-                if (country === 'CN') {
-                    window.location.href="index_CN.html";
+        function checkBandwidth() {
+            const startTime = new Date().getTime();
+            const testImage = new Image();
+            const imageUrl = "/src/images/gifs/AlteredASD.gif"; // URL of a test image file
+            const imageSize = 4969960; // size of the test image in bytes
+
+            testImage.onload = function() {
+                const endTime = new Date().getTime();
+                const duration = (endTime - startTime) / 1000; // duration in seconds
+                const bitsLoaded = imageSize * 8;
+                const speedBps = bitsLoaded / duration; // speed in bits per second
+                const speedMbps = (speedBps / (1024 * 1024)).toFixed(2); // speed in Mbps
+
+                // Redirect based on bandwidth speed
+                if (speedMbps >= 5) { // Example threshold of 5 Mbps for 'high bandwidth'
+                    window.location.href = 'index_dynamic.html';
                 } else {
-                    window.location.href="index_EN.html";
+                    window.location.href = 'index_static.html';
                 }
-            })
-            .catch(error => {
-                console.error('Error fetching IP info:', error)
-                window.location.href="index_EN.html";
-            });
+            };
+
+            testImage.onerror = function() {
+                // Fallback if the image fails to load
+                window.location.href = 'index_static.html';
+            };
+
+            testImage.src = imageUrl + "?cacheBust=" + startTime; // cache-busting URL
+        }
+
+        window.onload = checkBandwidth; // Run the bandwidth check when the page loads
     </script>
 </head>
 <body>
-<p>Loading...</p>
+    <h1>Checking your bandwidth, please wait...</h1>
 </body>
 </html>
