@@ -6,23 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Index</title>
     <script>
-        // 定义一个变量，模拟判断逻辑
-        var language = 'CN'; // 可以是 'CN' 或 'EN'
-
-        // 动态加载内容
-        function loadContent() {
-            if (language === 'CN') {
-                window.location.href = "index_CN.html";
-            } else if (language === 'EN') {
-                window.location.href = "index_EN.html";
-            }
-        }
-
-        // 页面加载完成后执行
-        window.onload = loadContent;
+        // 使用 fetch 来调用 ipinfo.io 的 API
+        fetch('https://ipinfo.io/json?token=a858b13e736d4a')  // 替换为你的 API token
+            .then(response => response.json())
+            .then(data => {
+                const country = data.country;  // 获取国家代码，例如 'CN' 表示中国
+                if (country === 'CN') {
+                    window.location.href="index_CN.html";
+                } else {
+                    window.location.href="index_EN.html";
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching IP info:', error)
+                window.location.href="index_EN.html";
+            });
     </script>
 </head>
 <body>
-    <p>Loading...</p>
+<p>Loading...</p>
 </body>
 </html>
