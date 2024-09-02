@@ -98,11 +98,13 @@
             testImage.src = imageUrl + "?cacheBust=" + startTime; // cache-busting URL
         }
 
-        window.onload = checkBandwidth; // Run the bandwidth check when the page loads
+        // window.onload = checkBandwidth; // Run the bandwidth check when the page loads
+        window.location.href='main.html?version=static'
     </script>
 </head>
 <body>
-<h1>Bandwidth Test</h1>
-<div id="status">Testing your bandwidth, please wait...</div>
+<!--<h1>Bandwidth Test</h1>-->
+<!--<div id="status">Testing your bandwidth, please wait...</div>-->
+<p>Loading...</p>
 </body>
 </html>
