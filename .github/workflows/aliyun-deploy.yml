@@ -26,4 +26,4 @@ jobs:
         pip install socket argparse
     - name: Send deploy command to aliyun server
       run: |
-        python deploy_aliyun.py --host ${{aliyun_ip}} --port ${{aliyun_port}}
+        python deploy_aliyun.py --host ${{ALIYUN_IP}} --port ${{ALIYUN_PORT}}
