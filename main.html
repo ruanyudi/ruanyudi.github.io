@@ -64,7 +64,7 @@
             // 获取 URL 查询参数部分
             ext_changeList = document.querySelectorAll('img');
             ext_changeList = Array.from(ext_changeList).filter(img => img.src.endsWith('.png'));
-            ext_changeList = Array.from(ext_changeList).filter(img => img.class==='dynamic-static');
+            ext_changeList = Array.from(ext_changeList).filter(img => img.className==='dynamic-static');
             let queryString = window.location.search;
 
             // 创建 URLSearchParams 对象
