@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="/css/desktop.css" media="screen and (min-width: 601px)">
     <link rel="stylesheet" href="/css/mobile.css" media="screen and (max-width: 600px)">
     <style>
+        .alert_bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         /* Media query to hide the right column when screen width is less than 600px */
         @media (max-width: 600px) {
             .right-column {
@@ -56,6 +69,7 @@
                 if (src.endsWith(origin)) {
                     // 替换 .gif 为 .png
                     img.src = src.replace(origin, target);
+                    img.loading = 'lazy';
                 }
             });
         }
@@ -76,6 +90,7 @@
                 document.getElementById('low-bandwidth-attention').style.display = 'block';
                 changeImageExtensions('.gif', '.png')
             } else {
+                alert_bar0.style.display = 'none';
                 document.getElementById('low-bandwidth-attention').style.display = 'none';
                 changeImageExtensions('.png', '.gif')
             }
@@ -87,6 +102,13 @@
 </head>
 
 <body>
+<div id="alert_bar0" class="alert_bar">
+    <em> It looks like you're accessing a static
+        version of the site due to a low-bandwidth network connection.
+        For an enhanced experience with more features, please visit
+        <a href="main.html?version=dynamic"><u style="color:cornflowerblue;">Link</u></a>.</em>
+    <!-- <button onclick="acceptCookies()">接受</button> -->
+</div>
 <div class="mobile-component">
     <ul>
         <li><a href="#Top"><strong>Yudi Ruan</strong></a></li>&nbsp;·&nbsp;
@@ -357,7 +379,7 @@
                             <br>
                             <em>Undergraduate Student</em>
                             <br>
-                            <em>Rank 1/67 GPA:4.08/5.00</em>
+                            <em>Rank 1/67 GPA:4.12/5.00</em>
                             <br>
 
                             <br>
