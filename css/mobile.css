@@ -357,3 +357,91 @@ td {
   margin-right: 5px;
   margin-left: 5px;
 }
+
+/* 横向滚动展示栏样式 - 移动端 */
+.scroll-showcase {
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.scroll-showcase h2 {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #2a9d8f;
+    font-size: 20px;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 8px 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #2a9d8f;
+    border-radius: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #1f7a6b;
+}
+
+.scroll-item {
+    flex: 0 0 200px;
+    min-width: 200px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.scroll-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-color: #2a9d8f;
+}
+
+.scroll-item.active {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-color: #2a9d8f;
+    background: linear-gradient(135deg, #e8f5f3 0%, #d4f0ea 100%);
+}
+
+.item-content {
+    text-align: center;
+}
+
+.item-icon {
+    font-size: 2em;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.item-title {
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #2a9d8f;
+    margin-bottom: 6px;
+}
+
+.item-desc {
+    font-size: 0.8em;
+    color: #6c757d;
+    line-height: 1.3;
+}

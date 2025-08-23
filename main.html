@@ -23,6 +23,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 10; /* 确保在照片墙上方 */
         }
         /* Media query to hide the right column when screen width is less than 600px */
         @media (max-width: 600px) {
@@ -49,6 +50,122 @@
 
             .bottom-column {
                 display: none;
+            }
+        }
+
+        /* 照片墙样式 */
+        .photo-wall-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 10%, rgba(255,255,255,0.1) 90%, transparent 100%);
+            border-radius: 0;
+            padding: 20px 0;
+            height: 185px; /* 增加高度以适应更大的图片 */
+            max-width: 100%; /* 确保不超出容器宽度 */
+            box-sizing: border-box; /* 确保padding不会增加总宽度 */
+            z-index: 1; /* 确保在alert_bar下方 */
+        }
+
+        .photo-wall-container::before,
+        .photo-wall-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .photo-wall-container::before {
+            left: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,1) 0%, transparent 100%);
+        }
+
+        .photo-wall-container::after {
+            right: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,1) 100%);
+        }
+
+        .photo-wall {
+            display: flex;
+            animation: scroll 60s linear infinite;
+            width: max-content;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            align-items: center;
+        }
+
+        .photo-item {
+            flex-shrink: 0;
+            margin: 0 5px;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            max-width: 200px; /* 限制最大宽度 */
+        }
+
+        .photo-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-item img {
+            width: 220px;
+            height: 165px;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .photo-item img {
+                width: 160px;
+                height: 120px;
+            }
+            
+            .photo-wall {
+                animation-duration: 30s;
+            }
+
+            .photo-wall-container::before,
+            .photo-wall-container::after {
+                width: 30px;
+            }
+
+            .photo-wall-container {
+                padding: 15px 0;
+                height: 150px; /* 移动端增加高度 */
+            }
+        }
+
+        /* 超小屏幕适配 */
+        @media (max-width: 400px) {
+            .photo-item img {
+                width: 140px;
+                height: 105px;
+            }
+            
+            .photo-wall {
+                animation-duration: 25s;
+            }
+
+            .photo-wall-container {
+                height: 135px; /* 超小屏幕增加高度 */
             }
         }
     </style>
@@ -98,6 +215,66 @@
 
         // 确保 DOM 完全加载后调用 getQueryParams
         document.addEventListener("DOMContentLoaded", getQueryParams);
+
+        // 照片墙交互控制
+        document.addEventListener("DOMContentLoaded", function() {
+            const photoWall = document.querySelector('.photo-wall');
+            const photoWallContainer = document.querySelector('.photo-wall-container');
+            
+            if (photoWall && photoWallContainer) {
+                // 鼠标悬停时暂停动画
+                photoWallContainer.addEventListener('mouseenter', function() {
+                    photoWall.style.animationPlayState = 'paused';
+                });
+                
+                // 鼠标离开时恢复动画
+                photoWallContainer.addEventListener('mouseleave', function() {
+                    photoWall.style.animationPlayState = 'running';
+                });
+                
+                // 点击图片时放大显示
+                const photoItems = document.querySelectorAll('.photo-item');
+                photoItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const img = this.querySelector('img');
+                        if (img) {
+                            // 创建模态框显示大图
+                            const modal = document.createElement('div');
+                            modal.style.cssText = `
+                                position: fixed;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(0, 0, 0, 0.8);
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                z-index: 1000;
+                                cursor: pointer;
+                            `;
+                            
+                            const modalImg = document.createElement('img');
+                            modalImg.src = img.src;
+                            modalImg.style.cssText = `
+                                max-width: 90%;
+                                max-height: 90%;
+                                object-fit: contain;
+                                border-radius: 8px;
+                            `;
+                            
+                            modal.appendChild(modalImg);
+                            document.body.appendChild(modal);
+                            
+                            // 点击模态框关闭
+                            modal.addEventListener('click', function() {
+                                document.body.removeChild(modal);
+                            });
+                        }
+                    });
+                });
+            }
+        });
     </script>
 </head>
 
@@ -239,6 +416,40 @@
                 </div>
             </div>
 
+            <hr>
+            
+            <!-- 自动滚动照片墙 -->
+            <section id="PhotoWall"></section>
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                <tbody>
+                <tr>
+                    <td style="padding:0px;width:100%;vertical-align:middle">
+                        <div class="photo-wall-container">
+                            <div class="photo-wall">
+                                <div class="photo-item">
+                                    <img src="src/images/highlights/微信图片_20250823170021.jpg">
+                                </div>
+                                <div class="photo-item">
+                                    <img src="src\images\highlights\微信图片_20250823170855.jpg">
+                                </div>
+                                <div class="photo-item">
+                                    <img src="src\images\highlights\微信图片_20250823170901.jpg">
+                                </div>
+                                <div class="photo-item">
+                                    <img src="src\images\highlights\微信图片_20250823170907.jpg">
+                                </div>
+                                <div class="photo-item">
+                                    <img src="src\images\highlights\微信图片_20250823170912.jpg">
+                                </div>
+                                <div class="photo-item">
+                                    <img src="src\images\highlights\微信图片_20250823170917.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
             <hr>
             <section id="Awards"></section>
             <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
@@ -464,7 +675,7 @@
                             <br>
                         </p>
                         <p>
-                            California, USA. 2024/10 - present
+                            California, USA. 2024/10 - 2025/8
                         </p>
                     </td>
                 </tr>
