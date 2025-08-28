@@ -832,6 +832,202 @@
 
             <div class="paper-container">
                 <div class="image">
+                    <img src='src/images/ras.png' alt="1uavnugv"  class="dynamic-static">
+                </div>
+                <div class="text">
+                    <span class="papertitle">Accelerating Hybrid Rice Breeding with In-Field Based on Grid Mapping and Agri-UGV</span><br>
+
+                    <p>
+                        Huaiqu Feng,
+                        <u><strong>Yudi Ruan</strong></u>,
+                        Te Xi,
+                        Yulei Pan,
+                        Dongdong Du,
+                        Yongwei Wang
+                        <br>
+                    </p>
+
+                    <p>
+                        This research presents a comprehensive study on the contour mapping of rice
+                        canopies for Agricultural Unmanned Ground Vehicles (Agri-UGVs) operating in
+                        complex, unknown hybrid rice fields. Accurate Mapping is crucial for these vehicles to
+                        plan their operational areas efficiently while steering clear of protected zones. The
+                        motion equations that underpin the control of Agri-UGVs tasked with intelligent impurity
+                        removal heavily rely on the precise measurements of hybrid rice height and canopy
+                        contour. Therefore, the accurate estimation of these parameters is vital for the effective
+                        perception and operation of Agricultural robots. The Agri-UGV, equipped with
+                        advanced RGB-D depth sensors, facilitates the collection of distance measurements
+                        and the perception of the surrounding hybrid rice canopy's geometrical structure. This
+                        introduces an innovative mapping estimation and algorithm tailored for the hybrid rice
+                        canopy contour, utilizing a combination of kinematic and inertial measurements to
+                        achieve proprioceptive localization of the Agri-UGV. The algorithm incorporates an
+                        inference framework for grid mapping, which leverages real-time RGB-D data to
+                        iteratively refine the probabilistic distributions of the canopy's morphological properties.
+                        This is achieved by correlating the hybrid rice height intercept with in-field data while
+                        accounting for drift and uncertainty in the state estimation process. The result is a set
+                        of probabilistic contour estimates formatted as grid-based elevation maps. The
+                        proposed algorithm has been designed to operate in real-time within the ROS-Jetson
+                        system, and its performance is rigorously evaluated using metrics such as relative and
+                        absolute pose error. The algorithm has been successfully deployed on a High-
+                        clearance Agri-UGV platform, demonstrating its ability to accurately estimate rice
+                        canopy height's morphological properties in various paddy field environments. It also
+                        details the experiments conducted to explore the Agri-UGV's mapping capabilities
+                        within the cluttered hybrid rice environment. This research significantly contributes to
+                        the field of autonomous agricultural operations by enhancing the precision and
+                        reliability of canopy contour mapping, which is essential for the effective navigation and
+                        task execution of Agri-UGVs in intricate agricultural settings.
+                    </p>
+
+                    <p>
+                        <!--                <strong class="buttom">[Paper]</strong>-->
+                        <!--                <strong class="buttom">[Code]</strong>-->
+                    </p>
+                    <strong>Keywords: Crops, Phenotypic, Robot vision systems, Stereo image processing, Canopy mapping
+                        learning.</strong><br><br>
+                    <div class="insub">
+                        <strong>Under Review</strong>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="paper-container">
+                <div class="image">
+                    <img src='src/images/1uavnugv.png' alt="1uavnugv"  class="dynamic-static">
+                </div>
+                <div class="text">
+                    <span class="papertitle">nUGV-1UAV robot swarms: low-altitude remote sensing-based decentralized planning framework in-field environments</span><br>
+
+                    <p>
+                        Huaiqu Feng,
+                        <u><strong>Yudi Ruan</strong></u>,
+                        Dongfang Li,
+                        Te Xi,
+                        Yulei Pan,
+                        Yongwei Wang,
+                        Jun Wang
+                        <br>
+                    </p>
+
+                    <p>
+                        Hybrid-rice seed production demands rapid removal of heterologous plants. We present a decentralized nUGV-
+                        1UAV framework that couples low-altitude remote sensing with on-board swarm planning to accomplish this task
+                        in large paddy fields. A single UAV performs one-off high-resolution mapping; thereafter, multiple UGVs rely
+                        solely on the downloaded map and peer-to-peer communication to execute impurity removal. A topology-guided
+                        hybrid A* planner generates homotopy-consistent routes, while a decoupled space–time optimizer refines trajectories
+                        for curvature and collision constraints. Field experiments covering 12.7 acres with 73 impurity targets
+                        show that a fleet of six UGVs finishes the task in 1.21 h, attaining an individual UGV efficiency of 6 989 m2/h
+                        (≈10.5 acres/h). The optimal UGV-to-impurity ratio is 0.47: 5.75: 1 (UGV: impurities: acre). Simulations up to
+                        200 acres demonstrate linear scalability with 5 % deviation from the analytical model. Even when the UAV is
+                        disabled, UGVs maintain 92 % task completion using offline maps, confirming robust decentralization.
+                    </p>
+
+                    <p>
+                        <!--                <strong class="buttom">[Paper]</strong>-->
+                        <!--                <strong class="buttom">[Code]</strong>-->
+                    </p>
+                    <strong>Keywords: Smart agriculture, Autonomous navigation, Swarm robotics, Low-altitude remote sensing, Motion planning
+                        learning.</strong><br><br>
+                    <div class="pub">
+                        <strong>ISPRS Journal of Photogrammetry and Remote Sensing</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper-container">
+                <div class="image">
+                    <img src='src/images/nuav1ugv.png' alt="1uavnugv"  class="dynamic-static">
+                </div>
+                <div class="text">
+                    <span class="papertitle">1UGV-nUAV: In-Field Environments called the Energy-Constrained and Charging Station Low-altitude Remote Sensing-based Motion Planning</span><br>
+
+                    <p>
+                        Huaiqu Feng,
+                        <u><strong>Yudi Ruan</strong></u>,
+                        Dongfang Li,
+                        Te Xi,
+                        Yulei Pan,
+                        Yongwei Wang,
+                        <br>
+                    </p>
+
+                    <p>
+                    In contemporary smart agriculture, multi-machine collaboration among agricultural robotic is increasingly
+                    essential for navigating vast hybrid paddy fields. This paper presents the Energy-Constrained and Charging
+                    Station Low-altitude Remote Sensing-based Motion Planning (ECS-LRSMP), a novel approach for cooperative
+                    UGV-UAV systems in agricultural field exploration. The 1UGV-nUAV algorithm effectively addresses the
+                    challenges of energy constraints and path optimization through a five-step process: computing Voronoi
+                    Tessellations for charging station placement, solving the Hitting Set problem to select an optimal charging
+                    station set, applying a gravitational optimization algorithm to minimize UGV travel distance, and solving the
+                    Traveling Salesman Problem (TSP) for both UGV and UAV. This approach combines traditional combinatorial
+                    techniques with modern evolutionary algorithms to optimize travel distance. Simulation results demonstrate the
+                    algorithm's effectiveness in generating a coordinated plan that optimizes the performance of the hybrid UGV-
+                    UAV system in exploration scenarios. The findings highlight the significance of key parameters such as the
+                    maximum UAV flight distance 𝑅 and the number of clusters 𝛿 in designing efficient ECS-LRSMP instances.
+                    For example, increasing 𝑅 by 300% (from 3 to 9) raises UAV travel distance by 35% and UGV travel distance
+                    by 15%, establishing a positive correlation between R and total mission distance. Reducing 𝛿 from 15 to 5
+                    cuts UGV travel distance by 28% and total mission distance by 32%, confirming a positive correlation between
+                    𝛿 and total mission distance. Future research will explore incorporating environmental constraints, online UAV
+                    path planning, and refining the algorithm for broader applicability.    
+                    </p>
+
+                    <p>
+                        <!--                <strong class="buttom">[Paper]</strong>-->
+                        <!--                <strong class="buttom">[Code]</strong>-->
+                    </p>
+                    <strong>Keywords: Smart agriculture, Heterogeneous Robots, Multi-machine collaboration, Low-altitude remote sensing, Motion planning
+                        learning.</strong><br><br>
+                    <div class="insub">
+                        <strong>Under Review</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper-container">
+                <div class="image">
+                    <img src='src/images/skpnet.png' alt="1uavnugv"  class="dynamic-static">
+                </div>
+                <div class="text">
+                    <span class="papertitle">SKPNet: snake KAN perceive bridge cracks through semantic segmentation</span><br>
+
+                    <p>
+                        <u><strong>Yudi Ruan</strong></u>,
+                        Di Wang,
+                        Yijing Yuan,
+                        Shixin Jiang,
+                        Xianyi Yang
+                        <br>
+                    </p>
+
+                    <p>
+                        As the demands for ensuring bridge safety continue to rise, crack detection technology has become more crucial than
+                        ever. In this context, deep learning methods have been widely applied in the field of intelligent crack detection for
+                        bridges. However, existing methods are often constrained by complex backgrounds and computational limitations,
+                        struggling with issues such as weak crack continuity and insufficient detail representation. Inspired by biological
+                        mechanisms, a dynamic snake convolution (DSC) with tubular offsets is incorporated to tackle these challenges ef-
+                        fectively. Additionally, a channel-wise self-attention (CWSA) mechanism is introduced to efficiently fuse multi-scale
+                        features in U-Net, significantly enhancing the ability of the model to capture fine details. In the classification head,
+                        the traditional linear layer is replaced with a Kolmogorov-Arnold network (KAN) structure, which strengthens the
+                        robustness and generalization capacity of the model. Experimental results demonstrate that the proposed model im-
+                        proves detection accuracy, achieving a mean intersection over union (mIoU) of 0.877, while maintaining almost the
+                        same number of parameters, showcasing exceptional performance and practical applicability. Our project is released
+                        at https://github.com/ruanyudi/KanSeg-Bi.
+                    </p>
+
+                    <p>
+                        <!--                <strong class="buttom">[Paper]</strong>-->
+                        <!--                <strong class="buttom">[Code]</strong>-->
+                    </p>
+                    <strong>Keywords: Crack detection, Dynamic snake convolution, KAN, Attention, U-Net, Biomimetric
+                        learning.</strong><br><br>
+                    <div class="pub">
+                        <strong>Intelligence & Robotics</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper-container">
+                <div class="image">
                     <img src='src/images/Manuscript.png' alt="Manuscript"  class="dynamic-static">
                 </div>
                 <div class="text">
