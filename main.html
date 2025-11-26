@@ -91,13 +91,19 @@
 
         .photo-wall {
             display: flex;
-            animation: scroll 60s linear infinite;
+            animation: scroll 50s linear infinite;
             width: max-content;
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
             align-items: center;
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .photo-item {
@@ -108,6 +114,9 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             max-width: 200px; /* 限制最大宽度 */
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
         .photo-item:hover {
@@ -124,10 +133,10 @@
 
         @keyframes scroll {
             0% {
-                transform: translateX(0);
+                transform: translate3d(0, 0, 0);
             }
             100% {
-                transform: translateX(-50%);
+                transform: translate3d(-50%, 0, 0);
             }
         }
 
@@ -139,7 +148,7 @@
             }
             
             .photo-wall {
-                animation-duration: 30s;
+                animation-duration: 25s;
             }
 
             .photo-wall-container::before,
@@ -161,11 +170,59 @@
             }
             
             .photo-wall {
-                animation-duration: 25s;
+                animation-duration: 20s;
             }
 
             .photo-wall-container {
                 height: 135px; /* 超小屏幕增加高度 */
+            }
+        }
+
+        /* 滚动形式描述容器样式 */
+        .description-container {
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: var(--image-height, 200px);
+            padding-right: 10px;
+            margin-right: -10px;
+            /* 自定义滚动条样式 - Firefox */
+            scrollbar-width: thin;
+            scrollbar-color: #4192e8 #f1f1f1;
+        }
+
+        /* 自定义滚动条样式 - Chrome/Safari/Edge */
+        .description-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .description-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+            margin: 2px 0;
+        }
+
+        .description-container::-webkit-scrollbar-thumb {
+            background: #4192e8;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+
+        .description-container::-webkit-scrollbar-thumb:hover {
+            background: #2d6bc7;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 600px) {
+            .description-container {
+                padding-right: 8px;
+                margin-right: -8px;
+                scrollbar-width: thin;
+                scrollbar-color: #4192e8 #f1f1f1;
+            }
+
+            .description-container::-webkit-scrollbar {
+                width: 5px;
             }
         }
     </style>
@@ -216,12 +273,121 @@
         // 确保 DOM 完全加载后调用 getQueryParams
         document.addEventListener("DOMContentLoaded", getQueryParams);
 
+        // 滚动形式描述容器功能
+        document.addEventListener("DOMContentLoaded", function() {
+            // 找到Research和Projects section
+            const researchSection = document.getElementById('Research');
+            const projectsSection = document.getElementById('Projects');
+            const paperSection = document.getElementById('paper');
+            
+            // 获取所有paper-container
+            const allContainers = document.querySelectorAll('.paper-container');
+            const targetContainers = [];
+            
+            // 找到Research section后的所有paper-container（直到Projects section）
+            if (researchSection || paperSection) {
+                const startSection = paperSection || researchSection;
+                let element = startSection.nextElementSibling;
+                while (element) {
+                    if (element === projectsSection) break;
+                    if (element.classList && element.classList.contains('paper-container')) {
+                        targetContainers.push(element);
+                    }
+                    element = element.nextElementSibling;
+                }
+            }
+            
+            // 找到Projects section后的所有paper-container
+            if (projectsSection) {
+                let element = projectsSection.nextElementSibling;
+                while (element) {
+                    if (element.classList && element.classList.contains('paper-container')) {
+                        targetContainers.push(element);
+                    }
+                    element = element.nextElementSibling;
+                }
+            }
+            
+            targetContainers.forEach((container) => {
+                const imageDiv = container.querySelector('.image');
+                const textDiv = container.querySelector('.text');
+                const image = imageDiv ? imageDiv.querySelector('img') : null;
+                
+                if (!image || !textDiv) return;
+                
+                // 找到描述段落（通常是包含长文本的p标签，排除作者和链接部分）
+                const paragraphs = textDiv.querySelectorAll('p');
+                let descriptionP = null;
+                
+                // 找到最长的段落作为描述段落（排除包含链接按钮的段落）
+                paragraphs.forEach(p => {
+                    const text = p.textContent.trim();
+                    const hasLinkButton = p.querySelector('strong.buttom') || p.querySelector('a[href]');
+                    if (text.length > 100 && !hasLinkButton) {
+                        if (!descriptionP || text.length > descriptionP.textContent.trim().length) {
+                            descriptionP = p;
+                        }
+                    }
+                });
+                
+                if (!descriptionP) return;
+                
+                // 创建滚动容器
+                const wrapper = document.createElement('div');
+                wrapper.className = 'description-container';
+                descriptionP.parentNode.insertBefore(wrapper, descriptionP);
+                wrapper.appendChild(descriptionP);
+                
+                // 设置高度为图片高度
+                function setHeight() {
+                    if (image.complete && image.offsetHeight > 0) {
+                        const imageHeight = image.offsetHeight;
+                        wrapper.style.setProperty('--image-height', imageHeight + 'px');
+                        wrapper.style.maxHeight = imageHeight + 'px';
+                    } else {
+                        image.onload = function() {
+                            const imageHeight = image.offsetHeight;
+                            wrapper.style.setProperty('--image-height', imageHeight + 'px');
+                            wrapper.style.maxHeight = imageHeight + 'px';
+                        };
+                        // 如果图片已经加载但高度为0，等待一下再设置
+                        setTimeout(function() {
+                            if (image.offsetHeight > 0) {
+                                const imageHeight = image.offsetHeight;
+                                wrapper.style.setProperty('--image-height', imageHeight + 'px');
+                                wrapper.style.maxHeight = imageHeight + 'px';
+                            }
+                        }, 100);
+                    }
+                }
+                
+                setHeight();
+                
+                // 窗口大小改变时重新计算
+                let resizeTimer;
+                window.addEventListener('resize', function() {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(setHeight, 250);
+                });
+            });
+        });
+
         // 照片墙交互控制
         document.addEventListener("DOMContentLoaded", function() {
             const photoWall = document.querySelector('.photo-wall');
             const photoWallContainer = document.querySelector('.photo-wall-container');
             
             if (photoWall && photoWallContainer) {
+                // 复制照片项以实现无缝循环
+                const originalItems = photoWall.querySelectorAll('.photo-item');
+                if (originalItems.length > 0) {
+                    // 克隆所有照片项
+                    originalItems.forEach(item => {
+                        const clone = item.cloneNode(true);
+                        photoWall.appendChild(clone);
+                    });
+                }
+                
                 // 鼠标悬停时暂停动画
                 photoWallContainer.addEventListener('mouseenter', function() {
                     photoWall.style.animationPlayState = 'paused';
@@ -232,11 +398,11 @@
                     photoWall.style.animationPlayState = 'running';
                 });
                 
-                // 点击图片时放大显示
-                const photoItems = document.querySelectorAll('.photo-item');
-                photoItems.forEach(item => {
-                    item.addEventListener('click', function() {
-                        const img = this.querySelector('img');
+                // 点击图片时放大显示（包括克隆的图片）
+                photoWallContainer.addEventListener('click', function(e) {
+                    const photoItem = e.target.closest('.photo-item');
+                    if (photoItem) {
+                        const img = photoItem.querySelector('img');
                         if (img) {
                             // 创建模态框显示大图
                             const modal = document.createElement('div');
@@ -271,7 +437,7 @@
                                 document.body.removeChild(modal);
                             });
                         }
-                    });
+                    }
                 });
             }
         });

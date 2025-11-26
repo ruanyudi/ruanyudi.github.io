@@ -292,7 +292,7 @@ hr {
 }
 .paper-container .image {
   flex: 1;
-  max-width: 180px;
+  max-width: 280px;
   text-align: top;
   padding-right:20px;
 }
