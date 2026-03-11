@@ -7,6 +7,12 @@
     <title>Yudi Ruan 阮宇迪</title>
     <meta name="author" content="YudiRuan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Yudi Ruan's personal homepage: research, projects, experience, and awards in AI, VLM, embodied AI, and RAG systems.">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Yudi Ruan | AI Research & Projects">
+    <meta property="og:description" content="Personal homepage of Yudi Ruan: research highlights, realtime digital human demo, projects, and experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/src/images/profile.jpg">
     <link rel="shortcut icon" href="/src/images/cortex_logo.png" type="image/png">
     <link rel="stylesheet" href="/css/desktop.css" media="screen and (min-width: 601px)">
     <link rel="stylesheet" href="/css/mobile.css" media="screen and (max-width: 600px)">
@@ -139,6 +145,17 @@
                 transform: translate3d(-50%, 0, 0);
             }
         }
+        @media (prefers-reduced-motion: reduce) {
+            .photo-wall {
+                animation: none;
+            }
+            .photo-item {
+                transition: none;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
 
         /* 移动端适配 */
         @media (max-width: 600px) {
@@ -225,14 +242,183 @@
                 width: 5px;
             }
         }
+        :root {
+            --accent: #2a9d8f;
+            --accent-strong: #19776b;
+            --text-main: #202937;
+            --muted: #667085;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-border: rgba(44, 62, 80, 0.14);
+        }
+        body {
+            color: var(--text-main);
+            background:
+                radial-gradient(circle at 8% 0%, rgba(66, 133, 244, 0.09), transparent 32%),
+                radial-gradient(circle at 95% 0%, rgba(42, 157, 143, 0.11), transparent 28%),
+                #f8fbff;
+        }
+        .main-shell {
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 22px 54px rgba(15, 23, 42, 0.08);
+        }
+        .desktop-component ul,
+        .mobile-component ul {
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+        }
+        .bio {
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 14px;
+            padding: 18px 20px;
+            background: var(--card-bg);
+            box-shadow: 0 10px 30px rgba(12, 25, 48, 0.06);
+        }
+        .links a {
+            text-decoration: none;
+        }
+        .links a:hover {
+            color: var(--accent-strong);
+        }
+        .paper-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 14px;
+            margin: 16px 0;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .paper-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.10);
+        }
+        .pub {
+            display: inline-block;
+            border-radius: 999px;
+            padding: 4px 12px;
+            background: rgba(42, 157, 143, 0.10);
+            color: var(--accent-strong);
+            font-weight: 600;
+        }
+        .feature-demo-card {
+            margin: 22px 0 14px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+            gap: 18px;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(42, 157, 143, 0.24);
+            background: linear-gradient(135deg, #ffffff 0%, #eef8ff 100%);
+            box-shadow: 0 18px 40px rgba(10, 47, 67, 0.14);
+        }
+        .feature-demo-media {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            box-shadow: 0 10px 30px rgba(2, 8, 20, 0.16);
+            min-height: 260px;
+            background: #0f172a;
+        }
+        .feature-demo-video {
+            width: 100%;
+            height: 100%;
+            max-height: 460px;
+            object-fit: cover;
+            display: block;
+        }
+        .feature-demo-copy h3 {
+            margin: 0 0 10px;
+            font-size: 1.45rem;
+            line-height: 1.3;
+        }
+        .feature-demo-copy p {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+        .feature-kicker {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 5px 11px;
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #0b3d35;
+            background: rgba(42, 157, 143, 0.16);
+        }
+        .feature-list {
+            margin: 8px 0 14px;
+            padding-left: 18px;
+            color: var(--muted);
+            line-height: 1.6;
+            position: static;
+            width: auto;
+            z-index: auto;
+            background: transparent;
+            text-align: left;
+            list-style: disc;
+            padding-inline-start: 20px;
+            margin-block-start: 8px;
+            margin-block-end: 14px;
+        }
+        .feature-list li {
+            display: list-item;
+            padding: 0;
+        }
+        .feature-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-radius: 999px;
+            padding: 8px 15px;
+            border: 1px solid rgba(25, 119, 107, 0.28);
+            text-decoration: none;
+            color: #0f3b36;
+            background: #ffffff;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .demo-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(25, 119, 107, 0.48);
+            box-shadow: 0 10px 20px rgba(24, 117, 105, 0.16);
+        }
+        .demo-btn.primary {
+            color: #ffffff;
+            background: linear-gradient(135deg, #2a9d8f 0%, #1d7f73 100%);
+            border-color: transparent;
+        }
+        .demo-note {
+            color: #64748b;
+            font-size: 0.86rem;
+            margin-top: 10px;
+        }
+        @media (max-width: 900px) {
+            .feature-demo-card {
+                grid-template-columns: 1fr;
+            }
+            .feature-demo-media {
+                min-height: 220px;
+            }
+        }
     </style>
     <script>
         let ext_changeList = [];
 
         function changeImageExtensions(origin, target) {
             // 获取所有的 <img> 元素
-            images = ext_changeList
-            console.log(images)
+            const images = ext_changeList;
 
             // 遍历所有的 <img> 元素
             images.forEach(img => {
@@ -262,16 +448,41 @@
             let version = urlParams.get('version');
             if (version === 'static') {
                 document.getElementById('low-bandwidth-attention').style.display = 'block';
-                changeImageExtensions('.gif', '.png')
+                changeImageExtensions('.gif', '.png');
             } else {
-                alert_bar0.style.display = 'none';
+                const alertBar = document.getElementById('alert_bar0');
+                if (alertBar) {
+                    alertBar.style.display = 'none';
+                }
                 document.getElementById('low-bandwidth-attention').style.display = 'none';
-                changeImageExtensions('.png', '.gif')
+                changeImageExtensions('.png', '.gif');
             }
         }
 
         // 确保 DOM 完全加载后调用 getQueryParams
         document.addEventListener("DOMContentLoaded", getQueryParams);
+        document.addEventListener("DOMContentLoaded", function() {
+            // Global image optimization: keep hero image eager, lazy-load the rest.
+            const allImages = document.querySelectorAll('img');
+            allImages.forEach((img, index) => {
+                img.decoding = 'async';
+                if (index === 0 || img.classList.contains('profile-img')) {
+                    img.loading = 'eager';
+                    img.fetchPriority = 'high';
+                } else if (!img.loading) {
+                    img.loading = 'lazy';
+                }
+            });
+
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reducedMotion) {
+                const demoVideo = document.querySelector('.feature-demo-video');
+                if (demoVideo) {
+                    demoVideo.removeAttribute('autoplay');
+                    demoVideo.pause();
+                }
+            }
+        });
 
         // 滚动形式描述容器功能
         document.addEventListener("DOMContentLoaded", function() {
@@ -455,6 +666,7 @@
 <div class="mobile-component">
     <ul>
         <li><a href="#Top"><strong>Yudi Ruan</strong></a></li>&nbsp;·&nbsp;
+        <li><a href="#RealtimeAvatar">🤖</a></li>&nbsp;·&nbsp;
         <li><a href="#ResearchExperience">🔬</a></li>&nbsp;·&nbsp;
         <!--         <li><a href="#Education">📚</a></li>&nbsp;·&nbsp;-->
         <li><a href="#Research">💡</a></li>&nbsp;·&nbsp;
@@ -466,6 +678,7 @@
 <div class="desktop-component">
     <ul>
         <li><a href="#Top" style="font-size: x-large;"><strong>Yudi Ruan</strong></a></li>&nbsp;·&nbsp;
+        <li><a href="#RealtimeAvatar">Digital Human Demo</a></li>&nbsp;·&nbsp;
         <li><a href="#ResearchExperience">Experience</a></li>&nbsp;·&nbsp;
         <li><a href="#Research">Research</a></li>&nbsp;·&nbsp;
         <li><a href="#Projects">Projects</a></li>&nbsp;·&nbsp;
@@ -481,10 +694,15 @@
     // Add click event listeners to navigation links
     document.querySelectorAll('.mobile-component ul li a, .desktop-component ul li a, .a').forEach(function (anchor) {
         anchor.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent the default navigation behavior
-
             var targetId = this.getAttribute('href'); // Get the target section's ID from the link's href
+            if (!targetId || !targetId.startsWith('#')) {
+                return;
+            }
+            event.preventDefault(); // Prevent the default navigation behavior
             var targetElement = document.querySelector(targetId); // Find the target element using its ID
+            if (!targetElement) {
+                return;
+            }
             var targetOffsetTop = targetElement.offsetTop; // Get the target's top offset relative to the document
 
             // Calculate scroll position considering the navigation bar height to avoid overlap
@@ -498,7 +716,7 @@
 </script>
 
 <section id="Top"></section>
-<table style="max-width:900px;margin:auto;padding-top: 30px;">
+<table class="main-shell" style="max-width:900px;margin:auto;padding-top: 30px;">
     <tbody>
     <tr style="padding:0px">
         <td style="padding:0px">
@@ -582,6 +800,36 @@
                 </div>
             </div>
 
+            <section id="RealtimeAvatar"></section>
+            <div class="feature-demo-card">
+                <div class="feature-demo-media">
+                    <video class="feature-demo-video" autoplay muted loop controls playsinline preload="none"
+                           poster="src/images/profile.jpg" aria-label="Realtime digital human demo video">
+                        <source src="src/matrix-wall.web.mp4" type="video/mp4">
+                        <source src="src/matrix-wall.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="feature-demo-copy">
+                    <span class="feature-kicker">Featured Demo</span>
+                    <h3>Realtime Digital Human System</h3>
+                    <p>
+                        This demo presents my recent exploration on realtime digital humans, including live interaction
+                        workflow design, visual consistency control, and practical deployment for product-level demos.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Low-latency interaction pipeline for realtime response</li>
+                        <li>Stable visual style and scene-level continuity</li>
+                        <li>Designed for real-world demos and fast iteration</li>
+                    </ul>
+                    <div class="feature-actions">
+                        <a class="demo-btn primary" href="src/matrix-wall.web.mp4">Watch Full Demo</a>
+                        <a class="demo-btn" href="#Projects">View Related Projects</a>
+                    </div>
+                    <p class="demo-note">If the video does not autoplay on your device, click play in the built-in controls.</p>
+                </div>
+            </div>
+
             <hr>
             
             <!-- 自动滚动照片墙 -->
@@ -593,22 +841,22 @@
                         <div class="photo-wall-container">
                             <div class="photo-wall">
                                 <div class="photo-item">
-                                    <img src="src/images/highlights/微信图片_20250823170021.jpg">
+                                    <img src="src/images/highlights/微信图片_20250823170021.jpg" alt="Highlight photo 1">
                                 </div>
                                 <div class="photo-item">
-                                    <img src="src\images\highlights\微信图片_20250823170855.jpg">
+                                    <img src="src/images/highlights/微信图片_20250823170855.jpg" alt="Highlight photo 2">
                                 </div>
                                 <div class="photo-item">
-                                    <img src="src\images\highlights\微信图片_20250823170901.jpg">
+                                    <img src="src/images/highlights/微信图片_20250823170901.jpg" alt="Highlight photo 3">
                                 </div>
                                 <div class="photo-item">
-                                    <img src="src\images\highlights\微信图片_20250823170907.jpg">
+                                    <img src="src/images/highlights/微信图片_20250823170907.jpg" alt="Highlight photo 4">
                                 </div>
                                 <div class="photo-item">
-                                    <img src="src\images\highlights\微信图片_20250823170912.jpg">
+                                    <img src="src/images/highlights/微信图片_20250823170912.jpg" alt="Highlight photo 5">
                                 </div>
                                 <div class="photo-item">
-                                    <img src="src\images\highlights\微信图片_20250823170917.jpg">
+                                    <img src="src/images/highlights/微信图片_20250823170917.jpg" alt="Highlight photo 6">
                                 </div>
                             </div>
                         </div>
@@ -623,7 +871,7 @@
                 <tr>
                     <td style="padding:20px;width:100%;vertical-align:middle">
                         <h2><strong>Awards 🏆</strong></h2>
-                        <img src="src\images\highlights\1755944564768.png" width=100%>
+                        <img src="src/images/highlights/1755944564768.png" width=100% alt="Awards overview collage">
                         <h3><strong>1) International</strong></strong></h3>
                         <p>
                             <strong>Honorable Mention</strong> &#128208
