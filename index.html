@@ -4,107 +4,276 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bandwidth Check</title>
+    <title>Loading Yudi Ruan's Homepage...</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            text-align: center;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
-        h1 {
-            color: #4CAF50;
-            margin-top: 50px;
-            font-size: 2em;
-            font-weight: bold;
-        }
-
-        #status {
-            font-size: 1.2em;
-            margin: 20px auto;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 8px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .loading-container {
             text-align: center;
+            max-width: 500px;
+            width: 100%;
         }
-
-        .loading {
-            color: #2196F3;
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e2e8f0;
+            border-top-color: #2a9d8f;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 25px;
         }
-
-        .success {
-            color: #4CAF50;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
-
-        .error {
-            color: #F44336;
+        h1 {
+            font-size: 1.5rem;
+            color: #202937;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
-
-        .link {
-            color: #2196F3;
+        .status {
+            color: #667085;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .network-info {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: #667085;
+            border: 1px solid rgba(44, 62, 80, 0.1);
+        }
+        .network-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .status-good { background: #2a9d8f; }
+        .status-moderate { background: #f59e0b; }
+        .status-slow { background: #ef4444; }
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
         }
-
-        .link:hover {
-            text-decoration: underline;
+        .btn-primary {
+            background: #2a9d8f;
+            color: white;
         }
+        .btn-primary:hover {
+            background: #238b7e;
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background: white;
+            color: #667085;
+            border: 1px solid #e2e8f0;
+        }
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            border-color: #d1d5db;
+        }
+        .preference-hint {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        .hidden { display: none; }
     </style>
     <script>
-        function checkBandwidth() {
-            const statusElement = document.getElementById('status');
-            statusElement.textContent = 'Starting bandwidth test...';
-            statusElement.classList.add('loading');
-
-            const startTime = new Date().getTime();
-            const testImage = new Image();
-            const imageUrl = "/src/images/MedSegVisualizer.gif"; // URL of a test image file
-            const imageSize = 2406785; // size of the test image in bytes
-
-            testImage.onload = function () {
-                const endTime = new Date().getTime();
-                const duration = (endTime - startTime) / 1000; // duration in seconds
-                const bitsLoaded = imageSize * 8;
-                const speedBps = bitsLoaded / duration; // speed in bits per second
-                const speedMbps = (speedBps / (1024 * 1024)).toFixed(2); // speed in Mbps
-
-                statusElement.classList.remove('loading');
-                statusElement.classList.add('success');
-                statusElement.innerHTML = `Test complete. Your bandwidth is <strong>${speedMbps}</strong> Mbps.<br>`;
-
-                // Redirect based on bandwidth speed
-                if (speedMbps >= 10) { // Example threshold of 10 Mbps for 'high bandwidth'
-                    statusElement.innerHTML += 'Redirecting to <a href="main.html?version=dynamic" class="link">dynamic content</a>...';
-                    setTimeout(() => window.location.href = 'main.html?version=dynamic', 2000); // Redirect after 2 seconds
-                } else {
-                    statusElement.innerHTML += 'Redirecting to <a href="main.html?version=static" class="link">static content</a>...';
-                    setTimeout(() => window.location.href = 'main.html?version=static', 2000); // Redirect after 2 seconds
-                }
-            };
-
-            testImage.onerror = function () {
-                statusElement.classList.remove('loading');
-                statusElement.classList.add('error');
-                statusElement.innerHTML = 'Error loading image. Redirecting to <a href="main.html?version=static" class="link">static content</a>...';
-                setTimeout(() => window.location.href = 'main.html?version=static', 2000); // Redirect after 2 seconds
-            };
-
-            testImage.src = imageUrl + "?cacheBust=" + startTime; // cache-busting URL
+        // Network Information API wrapper
+        function getNetworkInfo() {
+            const connection = navigator.connection || 
+                             navigator.mozConnection || 
+                             navigator.webkitConnection;
+            
+            if (connection) {
+                return {
+                    effectiveType: connection.effectiveType, // '4g', '3g', '2g', 'slow-2g'
+                    downlink: connection.downlink, // Mbps
+                    rtt: connection.rtt, // Round-trip time in ms
+                    saveData: connection.saveData // Data saver mode
+                };
+            }
+            return null;
         }
 
-        // window.onload = checkBandwidth; // Run the bandwidth check when the page loads
-        window.location.href='main.html?version=static'
+        // Determine version based on network and preferences
+        function determineVersion() {
+            // Check user preference first
+            const savedPreference = localStorage.getItem('contentVersion');
+            if (savedPreference) {
+                return { version: savedPreference, reason: 'user_preference' };
+            }
+
+            // Check network conditions
+            const networkInfo = getNetworkInfo();
+            if (networkInfo) {
+                // Data saver mode - always use static
+                if (networkInfo.saveData) {
+                    return { version: 'static', reason: 'data_saver' };
+                }
+                // Slow connections - use static
+                if (networkInfo.effectiveType === '2g' || networkInfo.effectiveType === 'slow-2g') {
+                    return { version: 'static', reason: 'slow_network' };
+                }
+                // Good connection - use dynamic
+                if (networkInfo.effectiveType === '4g' && networkInfo.downlink > 5) {
+                    return { version: 'dynamic', reason: 'fast_network' };
+                }
+            }
+
+            // Default to progressive (static first, upgrade if possible)
+            return { version: 'progressive', reason: 'default' };
+        }
+
+        // Quick bandwidth test
+        async function quickBandwidthTest() {
+            const startTime = performance.now();
+            try {
+                // Try to fetch a small test image
+                const response = await fetch('/src/images/cqjtu_logo.webp', {
+                    method: 'HEAD',
+                    cache: 'no-cache'
+                });
+                const endTime = performance.now();
+                const duration = (endTime - startTime) / 1000;
+                
+                // Estimate based on response time
+                if (duration < 0.1) return 'fast';
+                if (duration < 0.3) return 'moderate';
+                return 'slow';
+            } catch (e) {
+                return 'unknown';
+            }
+        }
+
+        // Main initialization
+        async function init() {
+            const networkInfo = getNetworkInfo();
+            const decision = determineVersion();
+            
+            // Update UI with network status
+            const networkStatusEl = document.getElementById('networkStatus');
+            if (networkInfo) {
+                let statusClass = 'status-moderate';
+                let statusText = 'Moderate';
+                if (networkInfo.effectiveType === '4g' || networkInfo.downlink > 5) {
+                    statusClass = 'status-good';
+                    statusText = 'Good';
+                } else if (networkInfo.effectiveType === '2g' || networkInfo.effectiveType === 'slow-2g') {
+                    statusClass = 'status-slow';
+                    statusText = 'Slow';
+                }
+                networkStatusEl.innerHTML = `
+                    <span class="status-dot ${statusClass}"></span>
+                    Network: ${statusText} ${networkInfo.effectiveType ? '(' + networkInfo.effectiveType + ')' : ''}
+                `;
+            } else {
+                networkStatusEl.innerHTML = '<span class="status-dot status-moderate"></span> Network: Unknown';
+            }
+
+            // Show appropriate message
+            const statusEl = document.getElementById('status');
+            switch (decision.reason) {
+                case 'user_preference':
+                    statusEl.textContent = `Loading your preferred ${decision.version} version...`;
+                    break;
+                case 'data_saver':
+                    statusEl.textContent = 'Data saver detected. Loading lightweight version...';
+                    break;
+                case 'slow_network':
+                    statusEl.textContent = 'Loading optimized version for your connection...';
+                    break;
+                case 'fast_network':
+                    statusEl.textContent = 'Loading enhanced version with animations...';
+                    break;
+                default:
+                    statusEl.textContent = 'Loading content optimized for your device...';
+            }
+
+            // Quick bandwidth check for progressive mode
+            if (decision.version === 'progressive') {
+                const speed = await quickBandwidthTest();
+                if (speed === 'fast') {
+                    decision.version = 'dynamic';
+                } else {
+                    decision.version = 'static';
+                }
+            }
+
+            // Redirect after a short delay
+            setTimeout(() => {
+                window.location.href = `main.html?version=${decision.version}`;
+            }, 800);
+        }
+
+        // Manual selection handlers
+        function selectVersion(version) {
+            localStorage.setItem('contentVersion', version);
+            window.location.href = `main.html?version=${version}`;
+        }
+
+        // Run on load
+        window.addEventListener('load', init);
     </script>
 </head>
 <body>
-<!--<h1>Bandwidth Test</h1>-->
-<!--<div id="status">Testing your bandwidth, please wait...</div>-->
-<p>Loading...</p>
+    <div class="loading-container">
+        <div class="spinner"></div>
+        <h1>Yudi Ruan's Homepage</h1>
+        <div class="network-info">
+            <span id="networkStatus">Checking network...</span>
+        </div>
+        <p class="status" id="status">Analyzing your connection...</p>
+        
+        <div class="actions">
+            <button class="btn btn-primary" onclick="selectVersion('dynamic')">
+                🎬 Enhanced
+            </button>
+            <button class="btn btn-secondary" onclick="selectVersion('static')">
+                🖼️ Lightweight
+            </button>
+        </div>
+        
+        <p class="preference-hint">
+            Your choice will be remembered for next time
+        </p>
+    </div>
 </body>
 </html>

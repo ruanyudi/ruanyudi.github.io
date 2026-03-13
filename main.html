@@ -249,6 +249,375 @@
             --muted: #667085;
             --card-bg: rgba(255, 255, 255, 0.92);
             --card-border: rgba(44, 62, 80, 0.14);
+            --timeline-line: #e2e8f0;
+            --timeline-dot: #2a9d8f;
+        }
+
+        /* ========== Experience Timeline Styles ========== */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 80px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--timeline-line) 0%, var(--timeline-dot) 50%, var(--timeline-line) 100%);
+        }
+        .timeline-item {
+            position: relative;
+            display: flex;
+            margin-bottom: 30px;
+            padding-left: 110px;
+        }
+        .timeline-date {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 65px;
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 73px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 3px solid var(--timeline-dot);
+            z-index: 2;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.2);
+            background: var(--timeline-dot);
+        }
+        .timeline-content {
+            flex: 1;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 18px 22px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .timeline-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+        }
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .timeline-title {
+            flex: 1;
+        }
+        .timeline-title strong {
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+        .timeline-title em {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        .timeline-body {
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        .timeline-body p {
+            margin: 4px 0;
+        }
+        .timeline-meta {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(42, 157, 143, 0.1);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--accent-strong);
+            margin-top: 8px;
+        }
+
+        /* ========== Research Filter Styles ========== */
+        .research-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 0 5px;
+        }
+        .filter-btn {
+            padding: 6px 16px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--muted);
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .filter-btn .count {
+            display: inline-block;
+            margin-left: 4px;
+            padding: 1px 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+        .research-section {
+            margin-bottom: 30px;
+        }
+        .research-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin: 20px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--timeline-line);
+        }
+        .research-section-title .badge {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-published {
+            background: rgba(42, 157, 143, 0.15);
+            color: var(--accent-strong);
+        }
+        .badge-review {
+            background: rgba(102, 112, 133, 0.15);
+            color: var(--muted);
+        }
+        .paper-container.hidden {
+            display: none;
+        }
+
+        /* ========== Version Toggle Styles ========== */
+        .version-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+        .version-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            backdrop-filter: blur(8px);
+        }
+        .version-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .version-btn .icon {
+            font-size: 1rem;
+        }
+        .version-btn .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2a9d8f;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .version-menu {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(12px);
+            display: none;
+            min-width: 200px;
+        }
+        .version-menu.show {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .version-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .version-option:hover {
+            background: rgba(42, 157, 143, 0.08);
+        }
+        .version-option.active {
+            background: rgba(42, 157, 143, 0.12);
+        }
+        .version-option .check {
+            width: 18px;
+            text-align: center;
+            color: #2a9d8f;
+            font-weight: bold;
+        }
+        .version-option .info {
+            flex: 1;
+        }
+        .version-option .label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+        .version-option .desc {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+        .upgrade-hint {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #2a9d8f, #238b7e);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 16px rgba(42, 157, 143, 0.3);
+            display: none;
+            max-width: 250px;
+            cursor: pointer;
+            z-index: 99;
+        }
+        .upgrade-hint.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .upgrade-hint .close {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            opacity: 0.7;
+            cursor: pointer;
+        }
+        .upgrade-hint .close:hover {
+            opacity: 1;
+        }
+
+        /* Progressive Loading States */
+        .image-loading {
+            position: relative;
+            overflow: hidden;
+        }
+        .image-loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+            100% { left: 150%; }
+        }
+
+        /* Mobile Version Toggle */
+        @media (max-width: 600px) {
+            .version-toggle {
+                bottom: 15px;
+                right: 15px;
+            }
+            .version-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            .version-btn .text {
+                display: none;
+            }
+            .upgrade-hint {
+                left: 15px;
+                right: 15px;
+                bottom: 70px;
+                max-width: none;
+            }
+        }
+
+        /* Mobile Timeline Adjustments */
+        @media (max-width: 600px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                padding-left: 50px;
+                margin-bottom: 20px;
+            }
+            .timeline-date {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: auto;
+                text-align: left;
+                margin-bottom: 5px;
+                font-size: 0.8rem;
+            }
+            .timeline-dot {
+                left: 13px;
+            }
+            .timeline-header {
+                flex-wrap: wrap;
+            }
+            .research-filters {
+                gap: 6px;
+            }
+            .filter-btn {
+                padding: 5px 12px;
+                font-size: 0.85rem;
+            }
         }
         body {
             color: var(--text-main);
@@ -414,20 +783,220 @@
         }
     </style>
     <script>
+        // ========== Version Management System ==========
+        const VersionManager = {
+            currentVersion: 'static', // 'static' or 'dynamic'
+            isProgressive: false,
+            imageCache: new Map(),
+            
+            init() {
+                this.parseUrlParams();
+                this.setupEventListeners();
+                this.applyVersion();
+            },
+
+            parseUrlParams() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const urlVersion = urlParams.get('version');
+                const savedVersion = localStorage.getItem('contentVersion');
+                
+                if (urlVersion === 'dynamic' || urlVersion === 'static') {
+                    this.currentVersion = urlVersion;
+                    this.isProgressive = false;
+                } else if (urlVersion === 'progressive' || (!urlVersion && !savedVersion)) {
+                    // Progressive mode: start with static, upgrade if possible
+                    this.currentVersion = 'static';
+                    this.isProgressive = true;
+                } else if (savedVersion) {
+                    this.currentVersion = savedVersion;
+                    this.isProgressive = false;
+                }
+            },
+
+            setupEventListeners() {
+                // Version toggle button
+                const toggleBtn = document.getElementById('versionToggleBtn');
+                const menu = document.getElementById('versionMenu');
+                
+                if (toggleBtn && menu) {
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        menu.classList.toggle('show');
+                    });
+
+                    document.addEventListener('click', () => {
+                        menu.classList.remove('show');
+                    });
+
+                    menu.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                    });
+                }
+
+                // Version options
+                document.querySelectorAll('.version-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        const version = option.dataset.version;
+                        this.switchVersion(version);
+                    });
+                });
+
+                // Upgrade hint
+                const upgradeHint = document.getElementById('upgradeHint');
+                if (upgradeHint) {
+                    upgradeHint.addEventListener('click', () => {
+                        this.switchVersion('dynamic');
+                    });
+                    const closeBtn = upgradeHint.querySelector('.close');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            upgradeHint.classList.remove('show');
+                            sessionStorage.setItem('upgradeHintDismissed', 'true');
+                        });
+                    }
+                }
+            },
+
+            applyVersion() {
+                const images = document.querySelectorAll('img.dynamic-static');
+                
+                if (this.currentVersion === 'static') {
+                    // Ensure all images are PNG
+                    images.forEach(img => {
+                        const gifSrc = img.src.replace('.png', '.gif').replace('.webp', '.gif');
+                        const pngSrc = gifSrc.replace('.gif', '.png');
+                        if (img.src !== pngSrc) {
+                            img.src = pngSrc;
+                        }
+                    });
+                    
+                    // Show bandwidth warning
+                    const warning = document.getElementById('low-bandwidth-attention');
+                    if (warning) warning.style.display = 'block';
+                    
+                    // Hide alert bar
+                    const alertBar = document.getElementById('alert_bar0');
+                    if (alertBar) alertBar.style.display = 'none';
+                    
+                    // Check for upgrade opportunity in progressive mode
+                    if (this.isProgressive) {
+                        this.checkForUpgrade();
+                    }
+                } else {
+                    // Load GIFs with progressive enhancement
+                    this.loadDynamicVersion(images);
+                }
+
+                this.updateUI();
+            },
+
+            loadDynamicVersion(images) {
+                images.forEach((img, index) => {
+                    const pngSrc = img.src;
+                    const gifSrc = pngSrc.replace('.png', '.gif').replace('.webp', '.gif');
+                    
+                    // Skip if already GIF
+                    if (img.src === gifSrc) return;
+                    
+                    // Add loading state
+                    img.parentElement.classList.add('image-loading');
+                    
+                    // Preload GIF
+                    const preloadImg = new Image();
+                    preloadImg.onload = () => {
+                        setTimeout(() => {
+                            img.src = gifSrc;
+                            img.parentElement.classList.remove('image-loading');
+                        }, index * 100); // Stagger loading
+                    };
+                    preloadImg.onerror = () => {
+                        img.parentElement.classList.remove('image-loading');
+                    };
+                    preloadImg.src = gifSrc;
+                });
+
+                // Hide bandwidth warning
+                const warning = document.getElementById('low-bandwidth-attention');
+                if (warning) warning.style.display = 'none';
+                
+                // Show alert bar with option to switch back
+                const alertBar = document.getElementById('alert_bar0');
+                if (alertBar) alertBar.style.display = 'none';
+            },
+
+            async checkForUpgrade() {
+                // Check network conditions
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                
+                if (connection) {
+                    // Don't suggest if data saver is on or connection is slow
+                    if (connection.saveData) return;
+                    if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') return;
+                    if (connection.downlink && connection.downlink < 2) return;
+                }
+
+                // Check if hint was previously dismissed
+                if (sessionStorage.getItem('upgradeHintDismissed')) return;
+
+                // Wait a bit then show upgrade hint
+                setTimeout(() => {
+                    const hint = document.getElementById('upgradeHint');
+                    if (hint && this.currentVersion === 'static') {
+                        hint.classList.add('show');
+                    }
+                }, 3000);
+            },
+
+            switchVersion(version) {
+                localStorage.setItem('contentVersion', version);
+                
+                // Update URL without reload if possible
+                const url = new URL(window.location);
+                url.searchParams.set('version', version);
+                window.history.replaceState({}, '', url);
+                
+                this.currentVersion = version;
+                this.isProgressive = false;
+                this.applyVersion();
+            },
+
+            updateUI() {
+                // Update toggle button
+                const btn = document.getElementById('versionToggleBtn');
+                if (btn) {
+                    const icon = this.currentVersion === 'dynamic' ? '🎬' : '🖼️';
+                    const text = this.currentVersion === 'dynamic' ? 'Enhanced' : 'Lightweight';
+                    btn.innerHTML = `<span class="icon">${icon}</span><span class="text">${text}</span><span class="status-dot"></span>`;
+                }
+
+                // Update menu selection
+                document.querySelectorAll('.version-option').forEach(option => {
+                    const check = option.querySelector('.check');
+                    if (option.dataset.version === this.currentVersion) {
+                        option.classList.add('active');
+                        if (check) check.textContent = '✓';
+                    } else {
+                        option.classList.remove('active');
+                        if (check) check.textContent = '';
+                    }
+                });
+
+                // Hide upgrade hint if switching to dynamic
+                if (this.currentVersion === 'dynamic') {
+                    const hint = document.getElementById('upgradeHint');
+                    if (hint) hint.classList.remove('show');
+                }
+            }
+        };
+
+        // Legacy function for backward compatibility
         let ext_changeList = [];
-
         function changeImageExtensions(origin, target) {
-            // 获取所有的 <img> 元素
-            const images = ext_changeList;
-
-            // 遍历所有的 <img> 元素
+            const images = document.querySelectorAll('img.dynamic-static');
             images.forEach(img => {
-                // 获取图像的 src 属性
                 let src = img.src;
-
-                // 检查 src 是否以 .gif 结尾
                 if (src.endsWith(origin)) {
-                    // 替换 .gif 为 .png
                     img.src = src.replace(origin, target);
                     img.loading = 'lazy';
                 }
@@ -435,28 +1004,8 @@
         }
 
         function getQueryParams() {
-            // 获取 URL 查询参数部分
-            ext_changeList = document.querySelectorAll('img');
-            ext_changeList = Array.from(ext_changeList).filter(img => img.src.endsWith('.png'));
-            ext_changeList = Array.from(ext_changeList).filter(img => img.className==='dynamic-static');
-            let queryString = window.location.search;
-
-            // 创建 URLSearchParams 对象
-            let urlParams = new URLSearchParams(queryString);
-
-            // 获取查询参数
-            let version = urlParams.get('version');
-            if (version === 'static') {
-                document.getElementById('low-bandwidth-attention').style.display = 'block';
-                changeImageExtensions('.gif', '.png');
-            } else {
-                const alertBar = document.getElementById('alert_bar0');
-                if (alertBar) {
-                    alertBar.style.display = 'none';
-                }
-                document.getElementById('low-bandwidth-attention').style.display = 'none';
-                changeImageExtensions('.png', '.gif');
-            }
+            // Delegate to VersionManager
+            VersionManager.init();
         }
 
         // 确保 DOM 完全加载后调用 getQueryParams
@@ -579,6 +1128,32 @@
                 window.addEventListener('resize', function() {
                     clearTimeout(resizeTimer);
                     resizeTimer = setTimeout(setHeight, 250);
+                });
+            });
+        });
+
+        // Research Filter Functionality
+        document.addEventListener("DOMContentLoaded", function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const paperContainers = document.querySelectorAll('.paper-container[data-categories]');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Filter papers
+                    paperContainers.forEach(container => {
+                        const categories = container.dataset.categories.split(' ');
+                        if (filter === 'all' || categories.includes(filter)) {
+                            container.classList.remove('hidden');
+                        } else {
+                            container.classList.add('hidden');
+                        }
+                    });
                 });
             });
         });
@@ -992,135 +1567,101 @@
                 </tbody>
             </table>
 
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr>
-                    <td style="padding:20px;width:100px;vertical-align:middle">
-                        <img src="src/images/cqjtu_logo.webp" alt="Your Image Alt Text"
-                             style="width: 100%; height: auto;">
-                    </td>
+            <div class="timeline">
+                <!-- Zhejiang Starlord -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2024/10 - Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title">
+                                <strong>Zhejiang Starlord Robotic Technology Co., Ltd</strong><br>
+                                <em>Chairman's Secretary</em>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <span class="timeline-meta">Zhejiang, China</span>
+                        </div>
+                    </div>
+                </div>
 
-                    <td style="padding:20px;width:auto;vertical-align:middle">
-                        <p><strong style="font-size: larger;">Chongqing Jiaotong University</strong>
-                            <br>
-                            <em>Undergraduate Student</em>
-                            <br>
-                            <em>Rank 1/65 GPA:4.15/5.00</em>
-                            <br>
+                <!-- Hedra -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2024/10 - 2025/8</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <img src="src/images/hedra-logo.png" alt="Hedra" class="timeline-logo">
+                            <div class="timeline-title">
+                                <strong>Hedra. Inc</strong><br>
+                                <em>Deep Learning Intern</em>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Parallelization, Quantization, Realtime-Avatar</p>
+                            <span class="timeline-meta">California, USA</span>
+                        </div>
+                    </div>
+                </div>
 
-                            <br>
-                            Few Shot Object Detection, Image Restoration
-                            <br>
-                            advised by Prof. Weikai Li
-                        </p>
+                <!-- CORTEX -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2024/8 - Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <img src="src/images/cortex_logo.png" alt="CORTEX" class="timeline-logo">
+                            <div class="timeline-title">
+                                <strong>CORTEX Technology Co., Ltd</strong><br>
+                                <em>Co-Founder</em>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Embodied AI, RAG AI Agent</p>
+                            <span class="timeline-meta">Taizhou, China</span>
+                        </div>
+                    </div>
+                </div>
 
-                        <p>
-                            China. 2022/7 - present
-                        </p>
+                <!-- Shanghai Panoramic -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2023/7 - 2024/9</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <img src="src/images/uvclinic.png" alt="Panoramic" class="timeline-logo">
+                            <div class="timeline-title">
+                                <strong>Shanghai Panoramic Medical Imaging Technology Co., Ltd</strong><br>
+                                <em>Research Intern</em>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Application of diagnosis of brain disorders</p>
+                            <span class="timeline-meta">Shanghai, China</span>
+                        </div>
+                    </div>
+                </div>
 
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr>
-                    <td style="padding:20px;width:100px;vertical-align:middle">
-                        <img src="src/images/uvclinic.png" alt="Your Image Alt Text" style="width: 100%; height: auto;">
-                    </td>
-
-                    <td style="padding:20px;width:auto;vertical-align:middle">
-                        <p><strong style="font-size: larger;">Shanghai Panoramic Medical Imaging Technology Co.,
-                            Ltd</strong>
-                            <br>
-                            <em>Research Intern</em>
-                            <br>
-                            <br>
-                            Application of diagnosis of brain disorders
-                            <br>
-                        </p>
-                        <p>
-                            Shanghai, China. 2023/7 - 2024/9
-                        </p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr>
-                    <td style="padding:20px;width:100px;vertical-align:middle">
-                        <img src="src/images/cortex_logo.png" alt="Your Image Alt Text"
-                             style="width: 100%; height: auto;">
-                    </td>
-
-                    <td style="padding:20px;width:auto;vertical-align:middle">
-                        <p><strong style="font-size: larger;">CORTEX Technology Co., Ltd</strong>
-                            <br>
-                            <em>Co-Founder</em>
-                            <br>
-                            <br>
-                            Embodied AI, RAG AI Agent
-                            <br>
-                        </p>
-                        <p>
-                            Taizhou, China. 2024/8 - present
-                        </p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr>
-                    <td style="padding:20px;width:100px;vertical-align:middle">
-                        <img src="src/images/hedra-logo.png" alt="Your Image Alt Text" style="width: 100%; height: auto;">
-                    </td>
-
-                    <td style="padding:20px;width:auto;vertical-align:middle">
-                        <p><strong style="font-size: larger;">Hedra. Inc</strong>
-                            <br>
-                            <em>Deep Learning Intern</em>
-                            <br>
-                            <br>
-                            Parallelization, Quantization, Realtime-Avatar
-                            <br>
-                        </p>
-                        <p>
-                            California, USA. 2024/10 - 2025/8
-                        </p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr>
-                    <td style="padding:20px;width:100px;vertical-align:middle">
-<!--                        <img src="" alt="Your Image Alt Text" style="width: 100%; height: auto;">-->
-                    </td>
-
-                    <td style="padding:20px;width:auto;vertical-align:middle">
-                        <p><strong style="font-size: larger;">Zhejiang Starlord Robotic Technology Co.,
-                            Ltd</strong>
-                            <br>
-                            <em>Chairman's Secretary</em>
-                            <br>
-                            <br>
-
-                            <br>
-                        </p>
-                        <p>
-                            Zhejiang, China. 2024/10 - present
-                        </p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                <!-- Chongqing Jiaotong University -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2022/7 - Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <img src="src/images/cqjtu_logo.webp" alt="CQJTU" class="timeline-logo">
+                            <div class="timeline-title">
+                                <strong>Chongqing Jiaotong University</strong><br>
+                                <em>Undergraduate Student · Rank 1/65 · GPA: 4.15/5.00</em>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Few Shot Object Detection, Image Restoration</p>
+                            <p>Advised by Prof. Weikai Li</p>
+                            <span class="timeline-meta">Chongqing, China</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <hr>
@@ -1146,7 +1687,21 @@
                             · <em><strong>Few Shot Object Detection</strong></em> &#127919
                         </div>
 
-
+                        <!-- Research Filters -->
+                        <div class="research-filters" style="margin-top: 25px;">
+                            <button class="filter-btn active" data-filter="all">
+                                All <span class="count">12</span>
+                            </button>
+                            <button class="filter-btn" data-filter="published">
+                                Published <span class="count">9</span>
+                            </button>
+                            <button class="filter-btn" data-filter="review">
+                                Under Review <span class="count">3</span>
+                            </button>
+                            <button class="filter-btn" data-filter="first-author">
+                                First Author <span class="count">3</span>
+                            </button>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
@@ -1154,7 +1709,7 @@
 
             <section id="paper"></section>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published first-author">
                 <div class="image">
                     <img src='src/images/ECAFormer.png' alt="ECAFormer" class="dynamic-static">
                 </div>
@@ -1196,7 +1751,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="review first-author">
                 <div class="image">
                     <img src='src/images/MFCP.png' alt="MFCP" class="dynamic-static">
                 </div>
@@ -1246,7 +1801,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="review">
                 <div class="image">
                     <img src='src/images/ras.png' alt="1uavnugv"  class="dynamic-static">
                 </div>
@@ -1307,7 +1862,7 @@
             </div>
 
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published">
                 <div class="image">
                     <img src='src/images/1uavnugv.png' alt="1uavnugv"  class="dynamic-static">
                 </div>
@@ -1351,7 +1906,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="review">
                 <div class="image">
                     <img src='src/images/nuav1ugv.png' alt="1uavnugv"  class="dynamic-static">
                 </div>
@@ -1400,7 +1955,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published first-author">
                 <div class="image">
                     <img src='src/images/skpnet.png' alt="1uavnugv"  class="dynamic-static">
                 </div>
@@ -1444,7 +1999,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published">
                 <div class="image">
                     <img src='src/images/Manuscript.png' alt="Manuscript"  class="dynamic-static">
                 </div>
@@ -1501,7 +2056,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published">
                 <div class="image">
                     <img src='src/images/tide.png' alt="tide"  class="dynamic-static">
                 </div>
@@ -1549,7 +2104,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published">
                 <div class="image">
                     <img src='src/images/toward.png' alt="toward"  class="dynamic-static">
                 </div>
@@ -1598,7 +2153,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published">
                 <div class="image">
                     <img src='src/images/MPGCN.png' alt="MPGCN"  class="dynamic-static">
                 </div>
@@ -1648,7 +2203,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published">
                 <div class="image">
                     <img src='src/images/FewSegment.png' alt="FewSegment"  class="dynamic-static">
                 </div>
@@ -1693,7 +2248,7 @@
                 </div>
             </div>
 
-            <div class="paper-container">
+            <div class="paper-container" data-categories="published">
                 <div class="image">
                     <img src='src/images/AlteredASD.png' alt="AlteredASD"  class="dynamic-static">
                 </div>
@@ -2040,6 +2595,39 @@
         </td>
     </tr>
 </table>
+
+<!-- Version Toggle Widget -->
+<div class="version-toggle">
+    <div class="version-menu" id="versionMenu">
+        <div class="version-option active" data-version="static">
+            <span class="check">✓</span>
+            <div class="info">
+                <div class="label">🖼️ Lightweight</div>
+                <div class="desc">Static images, faster loading</div>
+            </div>
+        </div>
+        <div class="version-option" data-version="dynamic">
+            <span class="check"></span>
+            <div class="info">
+                <div class="label">🎬 Enhanced</div>
+                <div class="desc">Animated demos, richer content</div>
+            </div>
+        </div>
+    </div>
+    <button class="version-btn" id="versionToggleBtn">
+        <span class="icon">🖼️</span>
+        <span class="text">Lightweight</span>
+        <span class="status-dot"></span>
+    </button>
+</div>
+
+<!-- Upgrade Hint -->
+<div class="upgrade-hint" id="upgradeHint">
+    <span class="close">×</span>
+    <strong>🚀 Good connection detected!</strong><br>
+    Click to enable animated demos
+</div>
+
 </body>
 </html>
 
