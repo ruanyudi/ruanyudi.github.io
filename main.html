@@ -1305,6 +1305,24 @@
             });
         });
     });
+
+    // Toggle Others Projects List
+    function toggleOthers() {
+        const projectList = document.getElementById('othersProjects');
+        const toggleBtn = document.querySelector('.others-toggle-btn');
+        
+        if (projectList.classList.contains('show')) {
+            // 折叠
+            projectList.classList.remove('show');
+            toggleBtn.classList.remove('active');
+            toggleBtn.innerHTML = 'Others <span class="arrow">▼</span>';
+        } else {
+            // 展开
+            projectList.classList.add('show');
+            toggleBtn.classList.add('active');
+            toggleBtn.innerHTML = 'Others <span class="arrow">▲</span>';
+        }
+    }
 </script>
 
 <section id="Top"></section>
@@ -2327,6 +2345,35 @@
                 </tbody>
             </table>
 
+            <!-- Bachelor Thesis: Multi-Camera BEV Perception System -->
+            <div class="paper-container">
+                <div class="image">
+                    <video style="width: 100%; border-radius: 8px;" autoplay muted loop controls playsinline
+                           poster="src/images/profile.jpg" aria-label="Multi-Camera BEV Perception Demo">
+                        <source src="src/bev_demo_compressed.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="text">
+                    <span class="papertitle">Multi-Camera BEV Perception System</span><br>
+                    <p>
+                        This is my bachelor's thesis project focusing on Bird's Eye View (BEV) perception using 
+                        <strong>six synchronized cameras</strong>. The system performs multi-camera fusion to generate 
+                        a unified BEV representation, enabling holistic understanding of the surrounding environment 
+                        for autonomous driving applications.
+                    </p>
+                    <p>
+                        The implementation involves camera calibration, feature extraction, view transformation, 
+                        and spatial fusion to construct accurate BEV features. This work demonstrates the potential 
+                        of multi-view perception in complex traffic scenarios.
+                    </p>
+                    <strong>Keywords: BEV Perception, Multi-Camera Fusion, Autonomous Driving, Computer Vision </strong><br><br>
+                    <div class="pub">
+                        Bachelor Thesis
+                    </div>
+                </div>
+            </div>
+
             <div class="paper-container">
                 <div class="image">
                     <img src='src/images/robotics.png' alt="robotics"  class="dynamic-static">
@@ -2378,103 +2425,105 @@
                 </div>
             </div>
 
-            <div class="paper-container">
-                <div class="image">
-                    <img src='src/images/autoware.png' alt="autoware"  class="dynamic-static">
-                </div>
-                <div class="text">
-                    <div class="papertitle">Train Multi-Source Fusion Perception System</div>
-                    <br>
-                    <p>
-                        It utilizes NVIDIA Jetson series development kits and Intel Realsense series
-                        cameras. It aims to measure the real-time velocity and location of urban trains through visual
-                        (monocular/stereo) and accelerometer data, constructing a visual inertial odometry system to
-                        replace traditional wheel encoders.
+            <!-- Others Toggle Button -->
+            <button class="others-toggle-btn" onclick="toggleOthers()">
+                Others <span class="arrow">▼</span>
+            </button>
+
+            <!-- Simplified Project List -->
+            <div class="simple-project-list" id="othersProjects">
+                
+                <div class="simple-project-item">
+                    <div class="project-header">
+                        <div class="project-title">
+                            Train Multi-Source Fusion Perception System
+                        </div>
+                        <span class="project-status">National Innovation</span>
+                    </div>
+                    <p class="project-desc">
+                        A visual-inertial odometry system based on NVIDIA Jetson and Intel Realsense. It measures real-time velocity and location of urban trains through monocular/stereo vision and accelerometer data, replacing traditional wheel encoders.
                     </p>
-                    <strong>Keywords: SLAM, Visual Odometry</strong><br><br>
-                    <div class="pub">
-                        Chinese National Innovation Project
+                    <div class="project-tags">
+                        <span class="project-tag">SLAM</span>
+                        <span class="project-tag">Visual Odometry</span>
+                        <span class="project-tag">Sensor Fusion</span>
+                        <span class="project-tag">Jetson</span>
                     </div>
                 </div>
 
-            </div>
-
-            <div class="paper-container">
-                <div class="image">
-                    <img src='src/images/LLIEVisualizer.png' alt="LLIEVisualizer"  class="dynamic-static">
-                </div>
-                <div class="text">
-                    <div class="papertitle">Image Enhancement and Analysis System</div>
-                    <br>
-                    <p>
-                        An integrated platform that integrates image enhancement models and high-level vision
-                        models, aimed at assisting with dataset annotation and enhancement. It uses ONNX for model
-                        deployment.
-                    </p>
-                    <strong>Keywords: QT, Model Deployment</strong><br><br>
-                    <div class="pub">
-                        Under Development
+                <div class="simple-project-item">
+                    <div class="project-header">
+                        <div class="project-title">
+                            Image Enhancement and Analysis System
+                        </div>
+                        <span class="project-status">In Progress</span>
                     </div>
-                    <!--              <p><strong>Second Prize. (6%)</strong></p>-->
-                </div>
-            </div>
-
-
-            <div class="paper-container">
-                <div class="image">
-                    <img src='src/images/RAGAgent.png' alt="RAGAgent"  class="dynamic-static">
-                </div>
-                <div class="text">
-                    <div class="papertitle"> CORTEX Chat Agent</div>
-                    <p>
-                        Built a customizable AI agent based on RAG technology, which helps to mitigate LLM
-                        hallucinations and accelerate the deployment of LLMs. It is inspired by NVIDIA's online course
-                        <a href="https://www.nvidia.cn/training/instructor-led-workshops/building-rag-agents-with-llms/">"Building
-                            RAG Agent with LLMs"</a>.
+                    <p class="project-desc">
+                        An integrated analysis platform combining image enhancement models and high-level vision models to assist dataset annotation and enhancement. Uses ONNX for model deployment with a QT-based GUI.
                     </p>
-                    <strong>Keywords: SLMs, LLMs, RAG</strong><br><br>
-                    <div class="pub">
-                        Under Development
+                    <div class="project-tags">
+                        <span class="project-tag">QT</span>
+                        <span class="project-tag">ONNX</span>
+                        <span class="project-tag">Low-light Enhancement</span>
+                        <span class="project-tag">Classification</span>
                     </div>
                 </div>
-            </div>
 
-            <h3 style="font-size: 1.5em; /* Adjust the font size */
-            font-weight: bold; /* Make the text bold */
-            color: #2a9d8f; /* Change the text color */
-            text-align: center; /* Center align the text */
-            margin: 20px 0; /* Add some margin above and below the heading */">
-                Empowering Traditional Industries with Knowledge: </h3>
+                <div class="simple-project-item">
+                    <div class="project-header">
+                        <div class="project-title">
+                            CORTEX Chat Agent
+                        </div>
+                        <span class="project-status">In Progress</span>
+                    </div>
+                    <p class="project-desc">
+                        A customizable AI assistant based on RAG technology to mitigate LLM hallucinations and accelerate deployment. Inspired by NVIDIA's "Building RAG Agent with LLMs" course.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">SLMs</span>
+                        <span class="project-tag">LLMs</span>
+                        <span class="project-tag">RAG</span>
+                        <span class="project-tag">Embodied AI</span>
+                    </div>
+                </div>
 
-            <div class="paper-container">
-                <div class="image">
-                    <img src='src/images/Tocore.png' alt="Tcore" class="dynamic-static">
+                <div class="simple-project-item">
+                    <div class="project-header">
+                        <div class="project-title">
+                            Web Design for Tocore
+                        </div>
+                        <span class="project-status">Commercial</span>
+                    </div>
+                    <p class="project-desc">
+                        Corporate website design and development for Tocore, including frontend implementation and Nginx server deployment configuration.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Nginx</span>
+                    </div>
                 </div>
-                <div class="text">
-                    <div class="papertitle">Web Design for Tocore</div>
-                    <br>
-                    <p></p>
-                    <strong>Keywords: HTML, CSS, JavaScript, Nginx</strong><br><br>
-                    <!--              <p><strong>Second Prize. (6%)</strong></p>-->
+
+                <div class="simple-project-item">
+                    <div class="project-header">
+                        <div class="project-title">
+                            FingerPrint Extractor for Safe Security
+                        </div>
+                        <a href="https://github.com/ruanyudi/FingerPrint" class="project-link">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">Code
+                        </a>
+                    </div>
+                    <p class="project-desc">
+                        A fingerprint extraction system for security applications, implementing fingerprint tracking, thinning processing, and feature extraction.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Tracking</span>
+                        <span class="project-tag">Fingerprint Processing</span>
+                        <span class="project-tag">Thinning Methods</span>
+                    </div>
                 </div>
-            </div>
-            <div class="paper-container">
-                <div class="image">
-                    <img src='src/images/FingerprintExtractor.png' alt="FingerprintExtractor"  class="dynamic-static">
-                </div>
-                <div class="text">
-                    <div class="papertitle">FingerPrint Extractor designed for Safe Security</div>
-                    <br>
-                    <p></p>
-                    <strong>Keywords: Tracking, FingerPrint, Thinning Methods</strong><br><br>
-                    <a href="https://github.com/ruanyudi/FingerPrint"><strong>
-                        [
-                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                             alt="GitHub Logo" class="inline-icon">
-                        Code]</strong>
-                    </a>
-                    <!--              <p><strong>Second Prize. (6%)</strong></p>-->
-                </div>
+
             </div>
 
             <!-- <div class="paper-container">
