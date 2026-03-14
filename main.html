@@ -589,12 +589,16 @@
 
         /* Mobile Timeline Adjustments */
         @media (max-width: 600px) {
+            .timeline {
+                padding: 15px 0;
+            }
             .timeline::before {
                 left: 20px;
             }
             .timeline-item {
+                display: block;
                 padding-left: 50px;
-                margin-bottom: 20px;
+                margin-bottom: 25px;
             }
             .timeline-date {
                 position: relative;
@@ -602,14 +606,27 @@
                 top: auto;
                 width: auto;
                 text-align: left;
-                margin-bottom: 5px;
-                font-size: 0.8rem;
+                margin-bottom: 8px;
+                margin-left: -30px;
+                font-size: 0.85rem;
+                color: var(--muted);
+                font-weight: 600;
             }
             .timeline-dot {
                 left: 13px;
+                top: 30px;
+                width: 14px;
+                height: 14px;
+            }
+            .timeline-content {
+                padding: 15px 18px;
             }
             .timeline-header {
                 flex-wrap: wrap;
+            }
+            .timeline-logo {
+                width: 36px;
+                height: 36px;
             }
             .research-filters {
                 gap: 6px;
